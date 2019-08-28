@@ -1,0 +1,17 @@
+@import "../../../styles/variables";
+
+jnt-icon[host=#{$jnt-icon-host}] {
+  line-height: 1;
+  font-family: "icons";
+  display: inline-block;
+  
+  &.icon-loading {
+    animation: rotate .6s linear infinite;
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,6 @@
+@import "../../../styles/variables";
+
+jnt-menu[host=#{$jnt-menu-host}] {
+  display: block;
+  flex: 1;
+}

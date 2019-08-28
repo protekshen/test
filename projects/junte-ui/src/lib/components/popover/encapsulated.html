@@ -1,0 +1,9 @@
+<div child-of="jnt-popover-host" arrow></div>
+<div child-of="jnt-popover-host" wrapper role="popover">
+  <div child-of="jnt-popover-host" title *ngIf="title">
+    <ng-container *stringTemplateOutlet="title">{{ title }}</ng-container>
+  </div>
+  <div child-of="jnt-popover-host" content>
+    <ng-container *stringTemplateOutlet="content">{{ content }}</ng-container>
+  </div>
+</div>

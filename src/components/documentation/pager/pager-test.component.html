@@ -1,0 +1,43 @@
+<jnt-container>
+  <h1>Pager</h1>
+  <jnt-stack resources [type]="ui.stack.type.horizontal">
+    <jnt-link [icon]="ui.icons.externalLink"
+              source="https://gitlab.com/junte/junte-ui/tree/master/projects/junte-ui/src/lib/components/pagination"
+              target="_blank" title="GitLab">
+    </jnt-link>
+    <jnt-link [icon]="ui.icons.externalLink"
+              source="https://www.figma.com/file/EIUNwZCXL9Nm5BKQKl43mfDr/Junte-UI?node-id=1472%3A3614"
+              target="_blank" title="Figma">
+    </jnt-link>
+  </jnt-stack>
+  <h3>Requirements</h3>
+
+  <ol>
+    <li>The page button should respond to mouse hover, click</li>
+    <li>The active page button should be highlighted</li>
+    <li>The pager must have next/prev buttons and first/last buttons</li>
+    <li>Overflow must be considered in the pager</li>
+    <li>The pager must have a page size selection</li>
+    <li>The page button should change the display when it is disabled</li>
+  </ol>
+
+  <hr>
+
+  <form [formGroup]="form">
+    <jnt-stack [type]="ui.stack.type.horizontal" [gutter]="ui.stack.gutter.large" [align]="ui.flex.align.center"
+    [justify]="ui.flex.justify.center">
+      <jnt-pagination [pagesCount]="pagesCount"
+                      formControlName="offset">
+      </jnt-pagination>
+
+      <jnt-page-size formControlName="first"></jnt-page-size>
+    </jnt-stack>
+  </form>
+
+  <ngx-prism language="html">
+    <pre><![CDATA[
+<jnt-pagination [pagesCount]="pagesCount"></jnt-pagination>
+<jnt-page-size></jnt-page-size>
+    ]]></pre>
+  </ngx-prism>
+</jnt-container>

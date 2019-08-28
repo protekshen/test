@@ -1,0 +1,79 @@
+<jnt-container>
+  <h1>Table</h1>
+  <jnt-stack resources [type]="ui.stack.type.horizontal">
+    <jnt-link [icon]="ui.icons.externalLink"
+              source="https://gitlab.com/junte/junte-ui/tree/master/projects/junte-ui/src/lib/components/table"
+              target="_blank" title="GitLab">
+    </jnt-link>
+    <jnt-link [icon]="ui.icons.externalLink"
+              source="https://www.figma.com/file/EIUNwZCXL9Nm5BKQKl43mfDr/Junte-UI-v1?node-id=1270%3A541"
+              target="_blank" title="Figma">
+    </jnt-link>
+  </jnt-stack>
+  <h3>Requirements</h3>
+
+  <ol>
+    <li>The table should show the loading</li>
+    <li>The table row should respond to mouse hover</li>
+    <li>The table must include pagination</li>
+    <li>The table must include action buttons (reload, add, etc.)</li>
+  </ol>
+
+  <hr>
+
+  <jnt-block [width]="ui.width.fluid">
+    <jnt-form [formGroup]="form">
+    <jnt-table [filter]="filter" #table [features]="[ui.table.features.search]">
+      <jnt-table-column title="Label" sort="label">
+        <ng-template #cellTemplate let-label="label">
+          {{label}}
+        </ng-template>
+      </jnt-table-column>
+
+      <jnt-table-column title="Value" sort="value">
+        <ng-template #cellTemplate let-value="value">
+          {{value}}
+        </ng-template>
+      </jnt-table-column>
+
+      <ng-template #rowActions let-row="row">
+        <jnt-menu [type]="ui.type.vertical" [spacer]="ui.stack.gutter.small">
+          <jnt-menu-item title="Edit" (click)="edit()"></jnt-menu-item>
+          <jnt-menu-item title="Delete" (click)="delete()"></jnt-menu-item>
+        </jnt-menu>
+      </ng-template>
+      <ng-template #filters>
+          <jnt-select valueField="value"
+                      labelField="label"
+                      [loadOptions]="loadOptions()"
+                      placeholder="Single select"
+                      formControlName="selectAjax" label="Filter">
+          </jnt-select>
+      </ng-template>
+    </jnt-table>
+    </jnt-form>
+  </jnt-block>
+
+  <ngx-prism language="html">
+      <pre><![CDATA[
+<jnt-block>
+  <jnt-table>
+    <jnt-table-column title="Label" sort="label">
+        <ng-template #cellTemplate let-label="label">label</ng-template>
+    </jnt-table-column>
+    <jnt-table-column title="Value" sort="value">
+        <ng-template #cellTemplate let-value="value">value</ng-template>
+    </jnt-table-column>
+     <ng-template #rowActions let-row="row">
+          <jnt-menu [type]="ui.type.vertical" [spacer]="ui.stack.gutter.small">
+            <jnt-menu-item title="Edit" (click)="edit()"></jnt-menu-item>
+            <jnt-menu-item title="Delete" (click)="delete()"></jnt-menu-item>
+          </jnt-menu>
+        </ng-template>
+  </jnt-table>
+</jnt-block>
+      ]]></pre>
+  </ngx-prism>
+
+</jnt-container>
+

@@ -1,0 +1,225 @@
+$jnt-link-host: 'jnt-link-host';
+$jnt-app-aside-host: 'jnt-app-aside-host';
+$jnt-app-body-host: 'jnt-app-body-host';
+$jnt-app-content-host: 'jnt-app-content-host';
+$jnt-app-footer-host: 'jnt-app-footer-host';
+$jnt-app-header-host: 'jnt-app-header-host';
+$jnt-app-sub-header-host: 'jnt-app-sub-header-host';
+$jnt-app-layout-host: 'jnt-app-layout-host';
+$jnt-userbar-host: 'jnt-userbar-host';
+$jnt-user-menu-host: 'jnt-user-menu-host';
+$jnt-menu-host: 'jnt-menu-host';
+$jnt-stack-host: 'jnt-stack-host';
+$jnt-badge-host: 'jnt-badge-host';
+$jnt-avatar-host: 'jnt-avatar-host';
+$jnt-block-host: 'jnt-block-host';
+$jnt-button-host: 'jnt-button-host';
+$jnt-calendar-host: 'jnt-calendar-host';
+$jnt-calendar-week-host: 'jnt-calendar-week-host';
+$jnt-calendar-day-host: 'jnt-calendar-day-host';
+$jnt-card-host: 'jnt-card-host';
+$jnt-checkbox-host: 'jnt-checkbox-host';
+$jnt-checkbox-group-host: 'jnt-checkbox-group-host';
+$jnt-circle-bar-host: 'jnt-circle-bar-host';
+$jnt-circle-bar-host2: 'jnt-circle-bar-host2';
+$jnt-form-host: 'jnt-form-host';
+$jnt-form-message-host: 'jnt-form-message-host';
+$jnt-form-label-host: 'jnt-form-label-host';
+$jnt-form-item-host: 'jnt-form-item-host';
+$jnt-form-control-host: 'jnt-form-control-host';
+$jnt-row-host: 'jnt-row-host';
+$jnt-container-host: 'jnt-container-host';
+$jnt-col-host: 'jnt-col-host';
+$jnt-icon-host: 'jnt-icon-host';
+$jnt-input-host: 'jnt-input-host';
+$jnt-label-host: 'jnt-label-host';
+$jnt-pagination-host: 'jnt-pagination-host';
+$jnt-page-size-host: 'jnt-pagination-host';
+$jnt-radio-host: 'jnt-radio-host';
+$jnt-radio-group-host: 'jnt-radio-group-host';
+$jnt-select-host: 'jnt-select-host';
+$jnt-skeleton-host: 'jnt-skeleton-host';
+$jnt-skeleton-avatar-host: 'jnt-skeleton-avatar-host';
+$jnt-skeleton-text-host: 'jnt-skeleton-text-host';
+$jnt-spinner-host: 'jnt-spinner-host';
+$jnt-switch-host: 'jnt-switch-host';
+$jnt-table-host: 'jnt-table-host';
+$jnt-tabs-host: 'jnt-tabs-host';
+$jnt-tab-host: 'jnt-tab-host';
+$jnt-bar-indicator-group-host: 'jnt-bar-indicator-group-host';
+$jnt-bar-indicator-host: 'jnt-bar-indicator-host';
+$jnt-avatars-group-host: 'jnt-avatars-group-host';
+$jnt-avatars-list-host: 'jnt-avatars-list-host';
+$jnt-breadcrumb-host: 'jnt-breadcrumb-host';
+$jnt-actions-host: 'jnt-actions-host';
+$jnt-action-host: 'jnt-action-host';
+$jnt-dropdown-host: 'jnt-dropdown-host';
+$jnt-popover-host: 'jnt-popover-host';
+$jnt-progress-bar-host: 'jnt-progress-bar-host';
+$jnt-chart-host: 'jnt-chart-host';
+$jnt-slider-carousel-arrow-host: 'jnt-slider-carousel-arrow-host';
+$jnt-slider-carousel-dots-host: 'jnt-slider-carousel-dots-host';
+$jnt-slider-carousel-item-host: 'jnt-slider-carousel-item-host';
+$jnt-slider-carousel-host: 'jnt-slider-carousel-host';
+$jnt-switcher-host: 'jnt-switcher-host';
+$jnt-theme-switcher-host: 'jnt-theme-switcher-host';
+$jnt-dot-host: 'jnt-dot-host';
+$jnt-month-gantt-host: 'jnt-month-gantt-host';
+
+/*Color*/
+$blue: #E7F5FF !default;
+$blue-100: #E6E9FA !default;
+$orange: #EE8030 !default;
+$green: #00CCB1 !default;
+$green-dark: #00B89F !default;
+$teal: #1D2932 !default;
+$red: #FF6262 !default;
+$red-dark: #DE5B5B !default;
+$yellow: #F8DB42 !default;
+$purple: #3949AB !default;
+$purple-dark: #00227B !default;
+$purple-light: #6F74DD !default;
+$purple-lighten: #C4C9E7 !default;
+$white-color: white !default;
+
+$gray-100: #F5F5F5 !default; //disabled bg: radio, input, checkbox
+$gray-200: #F7F7F7 !default; //page bg: sub-header, body
+$gray-300: #F0F0F0 !default; //highlight bg: hover on menu-item in aside, menu-item-in-dropdown, table row, calendar day, select option item
+$gray-400: #E9E9E9 !default; //muted: disabled button color in pager, disabled chips color in select, table row border color, table icon nodata color, tabs border bottom color
+$gray-500: #F3F4FC !default; //secondary bg: select chips, calendar weekend, skeleton, table head, table loading overlay, avatar
+$gray-600: #C4C4C4 !default; //disabled border & label field: radio, select, input, checkbox
+$gray-700: #D0D0D0 !default; //switch only
+$gray-800: #828282 !default; //disabled icon color: radio, checkbox; text light
+$gray-900: #4F4F4F !default; //text primary
+$gray-dark: #343434 !default; //text dark
+
+$primary-color: $purple !default;
+$primary-dark-color: $purple-dark !default;
+$primary-light-color: $purple-light !default;
+
+$secondary-color: $gray-500 !default;
+$secondary-dark-color: $blue-100 !default;
+
+$success-color: $green !default;
+$success-dark-color: $green-dark !default;
+
+$warning-color: $orange !default;
+
+$fail-color: $red !default;
+$fail-dark-color: $red-dark !default;
+
+$muted-color: $gray-400 !default;
+
+/* Text color */
+
+$primary-text-color: $gray-900 !default;
+$primary-text-dark-color: $gray-dark !default;
+$primary-text-light-color: $gray-800 !default;
+
+/* Background color */
+
+$primary-background: $white-color !default;
+$secondary-background: $secondary-color !default;
+$page-background: $gray-200 !default;
+$highlight-background: $gray-300 !default;
+
+/* Gutters */
+
+$spacer: 4px !default;
+
+$gutter-tiny: $spacer !default;
+$gutter-small: $spacer * 2 !default;
+$gutter-normal: ($spacer * 4) !default;
+$gutter-big: ($spacer * 6) !default;
+$gutter-large: ($spacer * 8) !default;
+$gutter-huge: ($spacer * 12) !default;
+
+/* Corners */
+
+$corner-small: 4px !default;
+$corner-normal: 8px !default;
+$corner-large: 40px !default;
+
+$blue-color: 'blue';
+$orange-color: 'orange';
+$green-color: 'green';
+$teal-color: 'teal';
+$red-color: 'red';
+$yellow-color: 'yellow';
+$purple-color: 'purple';
+$purpleDark-color: 'purple-dark';
+$purpleLight-color: 'purple-light';
+$gray-color: 'gray';
+$grayLight-color: 'gray-light';
+$grayDark-color: 'gray-dark';
+
+$scheme-primary: 'primary';
+$scheme-secondary: 'secondary';
+$scheme-success: 'success';
+$scheme-fail: 'fail';
+
+$state-normal: 'normal';
+$state-success: 'success';
+$state-failed: 'failed';
+
+$size-tiny: 'tiny';
+$size-small: 'small';
+$size-normal: 'normal';
+$size-large: 'large';
+
+/*Grid*/
+
+$grid-gutter: $gutter-normal !default;
+$grid-breakpoints: (
+  mobile: 0,
+  tablet: 768px,
+  desktop: 992px,
+  wide: 1200px
+) !default;
+
+/*Font*/
+
+$font-size-small: 13px !default;
+$font-size-base: 14px !default;
+$font-size-large: 16px !default;
+
+$font-weight-light: 300 !default;
+$font-weight-base: 400 !default;
+$font-weight-bold: 600 !default;
+
+$line-height-base: 1.5 !default;
+$line-height-large: 2.5 !default;
+$line-height-small: 1 !default;
+
+$font-family-base: Open Sans !default;
+
+$h1-font-size: $font-size-base * 4 !default;
+$h2-font-size: $font-size-base * 3 !default;
+$h3-font-size: $font-size-base * 1.85 !default;
+$h4-font-size: $font-size-base * 1.28 !default;
+$h5-font-size: $font-size-base * 1.2 !default;
+$h6-font-size: $font-size-base;
+
+$headings-margin-bottom: $gutter-normal !default;
+
+/*Common styles*/
+
+$body-color: $primary-text-color !default;
+//$body-background: $gray-200 !default;
+$body-font-family: $font-family-base !default;
+$body-font-weight: $font-weight-base !default;
+$body-line-height: $line-height-base !default;
+$body-font-size: $font-size-base !default;
+
+/*Shadows*/
+
+$shadow-primary: 0px 2px 8px rgba(0, 67, 167, 0.25) !default;
+$shadow-light: 0px 4px 10px rgba(0, 0, 0, 0.15) !default;
+$shadow-normal: 0px 2px 8px rgba(0, 0, 0, 0.25) !default;
+
+$shadow-primary-light: 2px 1px 10px rgba(0, 67, 167, 0.07) !default;
+
+$shadow-primary-dark: 0px 0px 6px rgba(8, 35, 202, 0.4) !default;
+
+
+

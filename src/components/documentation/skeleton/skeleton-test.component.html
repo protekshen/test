@@ -1,0 +1,122 @@
+<jnt-container>
+  <h1>Skeleton</h1>
+  <jnt-stack resources [type]="ui.stack.type.horizontal">
+    <jnt-link [icon]="ui.icons.externalLink"
+              source="https://gitlab.com/junte/junte-ui/tree/master/projects/junte-ui/src/lib/components/skeleton"
+              target="_blank" title="GitLab">
+    </jnt-link>
+    <jnt-link [icon]="ui.icons.externalLink"
+              source="https://www.figma.com/file/EIUNwZCXL9Nm5BKQKl43mfDr/Junte-UI?node-id=1270%3A539"
+              target="_blank" title="Figma">
+    </jnt-link>
+  </jnt-stack>
+  <h3>Requirements</h3>
+
+  <ol>
+
+    <li>Skeleton must have different types: text, avatar</li>
+    <li>Skeleton avatar must have different sizes: tiny, small, normal, large</li>
+    <li>In skeleton text may change the count of lines</li>
+    <li>Skeleton may have animation</li>
+  </ol>
+
+  <hr>
+
+
+  <h1>Skeleton avatar</h1>
+
+  <jnt-block [width]="ui.width.fluid" [padding]="ui.padding.normal">
+    <jnt-stack [type]="ui.stack.type.horizontal">
+      <ng-container *ngFor="let size of [ui.sizes.tiny, ui.sizes.small, ui.sizes.normal, ui.sizes.large]">
+        <jnt-skeleton [type]="ui.skeleton.type.avatar" [size]="size"></jnt-skeleton>
+      </ng-container>
+    </jnt-stack>
+  </jnt-block>
+
+  <h1>Skeleton text</h1>
+
+  <jnt-block [width]="ui.width.fluid" [padding]="ui.padding.normal">
+    <jnt-skeleton [type]="ui.skeleton.type.text" [lines]="3"></jnt-skeleton>
+  </jnt-block>
+
+  <h1>Skeleton</h1>
+
+  <h2>Horizontal skeleton</h2>
+
+  <jnt-block [width]="ui.width.fluid" [padding]="ui.padding.normal">
+    <jnt-stack [align]="ui.flex.align.stretch">
+      <jnt-stack [type]="ui.stack.type.horizontal">
+        <jnt-skeleton [type]="ui.skeleton.type.avatar"></jnt-skeleton>
+        <jnt-skeleton [lines]="3"></jnt-skeleton>
+      </jnt-stack>
+      <jnt-skeleton [lines]="3"></jnt-skeleton>
+    </jnt-stack>
+  </jnt-block>
+
+
+  <ngx-prism language="html">
+<pre><![CDATA[
+  <jnt-stack [align]="ui.flex.align.stretch">
+    <jnt-stack [type]="ui.stack.type.horizontal">
+      <jnt-skeleton [type]="ui.skeleton.type.avatar" [size]="ui.sizes.small"></jnt-skeleton>
+      <jnt-skeleton [lines]="3"></jnt-skeleton>
+    </jnt-stack>
+    <jnt-skeleton [lines]="3"></jnt-skeleton>
+  </jnt-stack>
+]]></pre>
+  </ngx-prism>
+
+  <h2>Vertical skeleton</h2>
+
+  <div style="width: 200px">
+    <jnt-block [width]="ui.width.fluid" [padding]="ui.padding.normal">
+      <jnt-stack [align]="ui.flex.align.center">
+        <jnt-skeleton [type]="ui.skeleton.type.avatar"></jnt-skeleton>
+        <jnt-skeleton [lines]="3"></jnt-skeleton>
+      </jnt-stack>
+    </jnt-block>
+  </div>
+
+  <ngx-prism language="html">
+<pre><![CDATA[
+  <jnt-stack [align]="ui.flex.align.center">
+    <jnt-skeleton [type]="ui.skeleton.type.avatar"></jnt-skeleton>
+    <jnt-skeleton [lines]="3"></jnt-skeleton>
+  </jnt-stack>
+]]></pre>
+  </ngx-prism>
+
+  <h3>API</h3>
+  <h4>jnt-skeleton</h4>
+  <table api>
+    <thead>
+    <tr>
+      <th>Property</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>[type]</td>
+      <td>-</td>
+      <td>avatar | text</td>
+      <td>text</td>
+    </tr>
+    <tr>
+      <td>[size]</td>
+      <td>-</td>
+      <td>tiny | small | normal | large</td>
+      <td>normal</td>
+    </tr>
+    <tr>
+      <td>[lines]</td>
+      <td>-</td>
+      <td>number</td>
+      <td>-</td>
+    </tr>
+    </tbody>
+  </table>
+
+</jnt-container>

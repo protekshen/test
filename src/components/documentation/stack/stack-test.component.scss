@@ -1,0 +1,15 @@
+@import "../../../../projects/junte-ui/src/lib/assets/styles/variables";
+
+:host {
+  display: block;
+}
+
+[resources] {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+[block] {
+  width: 100px;
+}

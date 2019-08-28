@@ -1,0 +1,11 @@
+<jnt-bar-indicator-group child-of="jnt-circle-bar-host" *ngFor="let group of groups; let index = index">
+  <jnt-bar-indicator child-of="jnt-circle-bar-host" *ngFor="let indicator of group.indicators"
+                     [value]="indicator.value"
+                     [title]="indicator.title"
+                     [color]="indicator.color">
+  </jnt-bar-indicator>
+</jnt-bar-indicator-group>
+
+<div child-of="jnt-circle-bar-host" class="content">
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+</div>

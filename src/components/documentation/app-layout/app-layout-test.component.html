@@ -1,0 +1,181 @@
+<jnt-container>
+
+  <h1>Layout</h1>
+  <jnt-stack resources [type]="ui.stack.type.horizontal">
+    <jnt-link [icon]="ui.icons.externalLink"
+              source="https://gitlab.com/junte/junte-ui/tree/master/projects/junte-ui/src/lib/components/app-layout"
+              target="_blank" title="GitLab">
+    </jnt-link>
+    <jnt-link [icon]="ui.icons.externalLink"
+              source="https://www.figma.com/file/EIUNwZCXL9Nm5BKQKl43mfDr/Junte-UI-v1?node-id=1910%3A2611"
+              target="_blank" title="Figma">
+    </jnt-link>
+  </jnt-stack>
+  <h3>Requirements</h3>
+
+  <ol>
+    <li>Footer must have copyrights and links</li>
+    <li>Aside must have drawer with overlay on mobile device</li>
+    <li>Mobile menu must have 2 levels with icons near menu item</li>
+    <li>Mobile menu must have compact design</li>
+    <li>Layout must include parts: header, aside, main, content, body, footer</li>
+    <li>Header must include logo, menu and userbar</li>
+  </ol>
+
+  <hr>
+
+
+  <iframe src="../../frame.html" frameborder="0" width="100%" height="400px">
+  </iframe>
+
+  <ngx-prism language="html">
+<pre><![CDATA[
+<jnt-app-layout>
+  <jnt-app-header>
+    <div>Header</div>
+  </jnt-app-header>
+    <jnt-app-aside>
+      <div>Aside</div>
+    </jnt-app-aside>
+    <jnt-app-content>
+        <jnt-app-body>
+           <jnt-container>
+              <jnt-app-sub-header (burger)="aside.toggle()">
+                <jnt-breadcrumb></jnt-breadcrumb>
+              </jnt-app-sub-header>
+            </jnt-container>
+          <div>Content</div>
+        </jnt-app-body>
+        <jnt-app-footer>
+          Footer
+        </jnt-app-footer>
+    </jnt-app-content>
+</jnt-app-layout>
+]]></pre>
+  </ngx-prism>
+
+  <h2>App-header</h2>
+
+  <jnt-app-layout>
+    <jnt-app-header>
+      <ng-template #logo>
+        <img src="https://teamprojector.com/assets/images/logo-white.svg" alt="">
+      </ng-template>
+      <ng-template #topMenu>
+        <jnt-menu>
+          <jnt-menu-item [link]="['/developer']" title="Developer"></jnt-menu-item>
+          <jnt-menu-item title="Team Leader"></jnt-menu-item>
+          <jnt-menu-item title="Project Manager"></jnt-menu-item>
+          <jnt-menu-item title="Customer"></jnt-menu-item>
+        </jnt-menu>
+      </ng-template>
+      <ng-template #actions>
+        <jnt-actions [spacer]="ui.stack.gutter.small">
+          <jnt-action>
+            <ng-template #template>Item 1</ng-template>
+            <ng-template #content>Content 1</ng-template>
+          </jnt-action>
+          <jnt-action>
+            <ng-template #template>Item 2</ng-template>
+            <ng-template #content>Content 2</ng-template>
+          </jnt-action>
+          <jnt-action>
+            <ng-template #template>Item 3</ng-template>
+            <ng-template #content>Content 3</ng-template>
+          </jnt-action>
+        </jnt-actions>
+      </ng-template>
+      <ng-template #userbar>
+        <jnt-userbar>
+          <ng-template #avatar>
+            <jnt-avatar [size]="ui.sizes.small"
+                        image="assets/image/alex.jpeg"></jnt-avatar>
+          </ng-template>
+
+          <ng-template #userMenu>
+            <jnt-user-menu [type]="ui.type.vertical" [spacer]="ui.sizes.small">
+              <jnt-button text="Logout"></jnt-button>
+            </jnt-user-menu>
+          </ng-template>
+        </jnt-userbar>
+      </ng-template>
+
+    </jnt-app-header>
+  </jnt-app-layout>
+
+  <ngx-prism language="html">
+<pre><![CDATA[
+<jnt-app-layout>
+  <jnt-app-header>
+    <ng-template #logo>
+        <img src="path" alt="">
+    </ng-template>
+    <ng-template #topMenu>
+      <jnt-menu>
+        <jnt-menu-item [link]="['/developer']" title="Developer" [icon]="ui.icons.check"></jnt-menu-item>
+        <jnt-menu-item [link]="['/leader']" title="Team Leader"></jnt-menu-item>
+        <jnt-menu-item [link]="['/manager']" title="Project Manager"></jnt-menu-item>
+        <jnt-menu-item [link]="['/customer']" title="Customer"></jnt-menu-item>
+      </jnt-menu>
+    </ng-template>
+    <ng-template #actions>
+        <jnt-actions>
+          <jnt-action>
+            <ng-template #template>Action 1</ng-template>
+            <ng-template #content>Content 1</ng-template>
+          </jnt-action>
+          <jnt-action>
+            <ng-template #template>Action 2</ng-template>
+            <ng-template #content>Content 2</ng-template>
+          </jnt-action>
+          <jnt-action>
+            <ng-template #template>Action 3</ng-template>
+            <ng-template #content>Content 3</ng-template>
+          </jnt-action>
+          <jnt-action></jnt-action>
+        </jnt-actions>
+      </ng-template>
+    <ng-template #userbar>
+      <jnt-userbar>
+        <ng-template #avatar>
+          <jnt-avatar [size]="ui.sizes.small" image="path"></jnt-avatar>
+        </ng-template>
+        <ng-template #userMenu>
+          <jnt-menu [type]="ui.type.vertical" [spacer]="ui.sizes.small">
+            <jnt-menu-item [link]="['/logout']" title="Logout"></jnt-menu-item>
+            <jnt-menu-item [link]="['/profile']" title="Profile"></jnt-menu-item>
+            <jnt-menu-item [link]="['/settings']" title="Settings"></jnt-menu-item>
+          </jnt-menu>
+        </ng-template>
+      </jnt-userbar>
+    </ng-template>
+  </jnt-app-header>
+</jnt-app-layout>
+]]></pre>
+  </ngx-prism>
+
+  <h2>App-aside</h2>
+
+
+  <h3>API</h3>
+  <h4>jnt-header</h4>
+  <table api>
+    <thead>
+    <tr>
+      <th>Property</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>[fixed]</td>
+      <td>-</td>
+      <td>true | false</td>
+      <td>false</td>
+    </tr>
+    </tbody>
+  </table>
+
+</jnt-container>

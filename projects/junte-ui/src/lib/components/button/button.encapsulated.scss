@@ -1,0 +1,295 @@
+@import "../../assets/styles/variables";
+
+$button-corner: $corner-large !default;
+$button-without-text-corner: $corner-small !default;
+
+$outline-ghost: 'ghost';
+$outline-transparent: 'transparent';
+
+$button-schemes: (
+  #{$scheme-primary}: (
+    color: $white-color,
+    color-outline: $primary-color,
+    color-transparent: $primary-color,
+    color-transparent-hover: $primary-dark-color,
+    border-outline: $primary-color,
+    background: $primary-color,
+    background-hover: $primary-dark-color,
+    background-outline-hover: $primary-color,
+    color-outline-hover: $white-color,
+    badge-color: $primary-color,
+    badge-background: $white-color,
+    badge-outline-color: $white-color,
+    badge-hover-outline-color: $primary-color,
+    badge-outline-background: $primary-color,
+    badge-hover-outline-background: $primary-background,
+    color-shadow-focus: $primary-color
+  ),
+  #{$scheme-secondary}: (
+    color: $gray-900,
+    color-outline: $gray-900,
+    color-transparent: $primary-text-color,
+    color-transparent-hover: $primary-text-dark-color,
+    border-outline: $gray-900,
+    background: $secondary-color,
+    background-hover: $blue-100,
+    background-outline-hover: $gray-900,
+    color-outline-hover: $secondary-color,
+    badge-color: $secondary-color,
+    badge-background: $gray-900,
+    badge-outline-color: $white-color,
+    badge-hover-outline-background: $secondary-color,
+    badge-hover-outline-color: $gray-900,
+    badge-outline-background: $gray-900,
+    color-shadow-focus: $gray-900
+  ),
+  #{$scheme-success}: (
+    color: $white-color,
+    color-outline: $success-color,
+    color-transparent: $success-color,
+    color-transparent-hover: $green-dark,
+    border-outline: $success-color,
+    background: $success-color,
+    background-hover: $green-dark,
+    background-outline-hover: $success-color,
+    color-outline-hover: $white-color,
+    badge-color: $success-color,
+    badge-background: $white-color,
+    badge-outline-color: $white-color,
+    badge-outline-background: $success-color,
+    badge-hover-outline-background: $primary-background,
+    badge-hover-outline-color: $success-color,
+    color-shadow-focus: $success-color
+  ),
+  #{$scheme-fail}: (
+    color: $white-color,
+    color-outline: $fail-color,
+    color-transparent: $fail-color,
+    color-transparent-hover: $red-dark,
+    border-outline: $fail-color,
+    background: $fail-color,
+    background-hover: $red-dark,
+    background-outline-hover: $fail-color,
+    color-outline-hover: $white-color,
+    badge-color: $fail-color,
+    badge-background: $white-color,
+    badge-outline-color: $white-color,
+    badge-outline-background: $fail-color,
+    badge-hover-outline-background: $primary-background,
+    badge-hover-outline-color: $fail-color,
+    color-shadow-focus: $fail-color
+  ),
+)!default;
+
+$button-sizes: (
+  #{$size-tiny}: (
+    padding: 0 20px,
+    padding-without-text: 0 7px,
+    font-size: 10px,
+    height: 24px,
+    badge-size: 18px
+  ),
+  #{$size-small}: (
+    padding: 0 50px,
+    padding-without-text: 0 10px,
+    font-size: 12px,
+    height: 30px,
+    badge-size: 24px
+  ),
+  #{$size-normal}: (
+    padding: 0 38px,
+    padding-without-text: 0 13px,
+    font-size: 14px,
+    height: 38px,
+    badge-size: 24px
+  ),
+  #{$size-large}: (
+    padding: 0 36px,
+    padding-without-text: 0 18px,
+    font-size: 16px,
+    height: 50px,
+    badge-size: 24px
+  ),
+)!default;
+
+@mixin scheme($scheme) {
+  button[child-of=#{$jnt-button-host}] {
+    color: #{map-get($scheme, color)};
+    background: #{map-get($scheme, background)};
+    &:hover, &:focus {
+      background-color: #{map-get($scheme, background-hover)};
+    }
+    &:focus {
+      box-shadow: 0 1px 5px #{map-get($scheme, color-shadow-focus)};
+    }
+    [badge][host=#{$jnt-badge-host}][child-of=#{$jnt-button-host}] {
+      sup[child-of=#{$jnt-badge-host}] {
+        color: #{map-get($scheme, badge-color)};
+        background: #{map-get($scheme, badge-background)} !important;
+      }
+    }
+  }
+}
+
+@mixin outline($scheme) {
+
+  button[child-of=#{$jnt-button-host}] {
+    color: #{map-get($scheme, color-outline)};
+    background-color: $primary-background;
+    border-color: #{map-get($scheme, border-outline)};
+    &:hover, &:focus {
+      background-color: #{map-get($scheme, background-outline-hover)};
+      color: #{map-get($scheme, color-outline-hover)};
+
+      [badge][host=#{$jnt-badge-host}][child-of=#{$jnt-button-host}] > sup[child-of=#{$jnt-badge-host}] {
+        background: #{map-get($scheme, badge-hover-outline-background)} !important;
+        color: #{map-get($scheme, badge-hover-outline-color)} !important;
+      }
+    }
+    [badge][host=#{$jnt-badge-host}][child-of=#{$jnt-button-host}] > sup[child-of=#{$jnt-badge-host}] {
+      background: #{map-get($scheme, badge-outline-background)} !important;
+      color: #{map-get($scheme, badge-outline-color)};
+    }
+  }
+}
+
+@mixin transparent($scheme) {
+
+  button[child-of=#{$jnt-button-host}] {
+    color: #{map-get($scheme, color-transparent)};
+    background-color: transparent;
+    border-color: transparent;
+    &:hover, &:focus {
+      color: #{map-get($scheme, color-transparent-hover)};
+    }
+  }
+}
+
+@mixin size($size) {
+  button[child-of=#{$jnt-button-host}] {
+    padding: #{map-get($size, padding)};
+    font-size: #{map-get($size, font-size)};
+    height: #{map-get($size, height)};
+    line-height: #{map-get($size, height)};
+  }
+  [badge][host=#{$jnt-badge-host}][child-of=#{$jnt-button-host}] > sup[child-of=#{$jnt-badge-host}] {
+    min-width: #{map-get($size, badge-size)};
+    width: #{map-get($size, badge-size)};
+    min-height: #{map-get($size, badge-size)};
+    height: #{map-get($size, badge-size)};
+    line-height: #{map-get($size, badge-size)};
+    span[child-of=#{$jnt-badge-host}] {
+      height: #{map-get($size, badge-size)};
+    }
+  }
+}
+
+@mixin size-without-text($size) {
+  button[child-of=#{$jnt-button-host}] {
+    padding: #{map-get($size, padding-without-text)};
+    font-size: #{map-get($size, font-size)};
+    min-height: #{map-get($size, min-height)};
+  }
+}
+
+jnt-button[host=#{$jnt-button-host}] {
+  display: inline-flex;
+  position: relative;
+
+  @each $scheme, $map in $button-schemes {
+    &[scheme='#{$scheme}'] {
+      @include scheme($map);
+      &[outline='#{$outline-ghost}'] {
+        button[child-of=#{$jnt-button-host}] {
+          border: 1px solid transparent;
+        }
+        @include outline($map);
+      }
+      &[outline='#{$outline-transparent}'] {
+        @include transparent($map);
+      }
+    }
+  }
+
+  @each $size, $map in $button-sizes {
+    &[size='#{$size}'] {
+      @include size($map);
+    }
+  }
+
+  &[loading='true'] {
+    button[child-of=#{$jnt-button-host}] {
+      cursor: default;
+    }
+  }
+  &[disabled='true'] {
+    opacity: .65;
+    pointer-events: none;
+    button[child-of=#{$jnt-button-host}] {
+      cursor: default;
+    }
+  }
+  &[width='fluid'] {
+    width: 100%;
+  }
+
+  &[with-text="false"] {
+    @each $size, $map in $button-sizes {
+      &[size='#{$size}'] {
+        @include size-without-text($map);
+      }
+    }
+    button[child-of=#{$jnt-button-host}] {
+      border-radius: $button-without-text-corner;
+      [icon][child-of=#{$jnt-button-host}] {
+        margin-right: 0;
+      }
+    }
+  }
+
+  button[child-of=#{$jnt-button-host}] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    outline: 0;
+    user-select: none;
+    box-sizing: border-box;
+    border-radius: $button-corner;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    position: relative;
+    font-family: $font-family-base;
+    line-height: $line-height-base;
+    [icon][child-of=#{$jnt-button-host}] {
+      margin-right: $gutter-small;
+    }
+    [text][child-of=#{$jnt-button-host}] {
+      display: inline-block;
+      padding-bottom: 1px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    [badge][child-of=#{$jnt-button-host}] {
+      margin-left: $gutter-small;
+    }
+
+    [loading][child-of=#{$jnt-button-host}] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+      [icon][child-of=#{$jnt-button-host}] {
+        margin: 0;
+        font-size: inherit;
+      }
+    }
+  }
+}
+
+

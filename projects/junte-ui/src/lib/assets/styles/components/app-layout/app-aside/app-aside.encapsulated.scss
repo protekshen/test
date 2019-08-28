@@ -1,0 +1,71 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/components/app-layout/common.encapsulated";
+
+$app-aside-bg: $white-color !default;
+$app-aside-width: 200px !default;
+$app-aside-shadow: $shadow-primary-light !default;
+$app-aside-z-index: 2 !default;
+
+jnt-app-aside[host=#{$jnt-app-aside-host}] {
+  display: block;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: $app-aside-z-index;
+
+  @media (max-width: 767px) {
+    &[opened="true"] {
+      width: 100%;
+      [overlay][child-of=#{$jnt-app-aside-host}] {
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+      }
+      [drawer][child-of=#{$jnt-app-aside-host}] {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    &[opened="false"] {
+      width: 0;
+      [overlay][child-of=#{$jnt-app-aside-host}] {
+        opacity: 0;
+      }
+      [drawer][child-of=#{$jnt-app-aside-host}] {
+        transform: translate3d(-100%, 0, 0);
+      }
+    }
+  }
+}
+
+[overlay][child-of=#{$jnt-app-aside-host}] {
+  position: fixed;
+  top: 0;
+  right: 0;
+  content: '';
+  background-color: rgba(0, 0, 0, .4);
+  opacity: 0;
+  z-index: 1;
+  transition: opacity .5s ease;
+}
+
+[drawer][child-of=#{$jnt-app-aside-host}] {
+  position: fixed;
+  padding: $app-header-height 0 0 0;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 2;
+  height: 100%;
+  width: $app-aside-width;
+  min-width: $app-aside-width;
+  background-color: $white-color;
+  box-shadow: $app-aside-shadow;
+  box-sizing: border-box;
+  transform: translate3d(0, 0, 0);
+  transition: transform .5s ease;
+}
+

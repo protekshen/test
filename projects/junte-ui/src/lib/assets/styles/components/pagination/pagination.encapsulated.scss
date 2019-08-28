@@ -1,0 +1,51 @@
+@import "../../../styles/variables";
+
+$pager-button-corner: $corner-small !default;
+$pager-button-border-color: transparent !default;
+$pager-button-padding-x: 0 !default;
+$pager-button-padding-y: 5px !default;
+$pager-active-button-border-bottom-color: $primary-color !default;
+$pager-hover-button-bg: $gray-500 !default;
+$pager-disabled-button-bg: transparent !default;
+$pager-disabled-button-color: $gray-400 !default;
+$pager-icon-size: 10px !default;
+$pager-icon-color: $gray-800 !default;
+
+jnt-pagination[host=#{$jnt-pagination-host}] {
+  display: block;
+  background-color: $white-color;
+}
+
+div[child-of=#{$jnt-pagination-host}] {
+  padding: $gutter-small 0;
+  a[child-of=#{$jnt-pagination-host}] {
+    padding: $pager-button-padding-x $pager-button-padding-y;
+    border: 1px solid $pager-button-border-color;
+    border-radius: $pager-button-corner;
+    transition: border-color .3s, background-color .3s;
+    &:hover {
+      background-color: $pager-hover-button-bg;
+    }
+  }
+  box-sizing: border-box;
+  cursor: pointer;
+  &[page] {
+    &[active="true"] {
+      font-weight: $font-weight-bold;
+      pointer-events: none;
+      border-bottom: 2px solid $pager-active-button-border-bottom-color;
+    }
+  }
+  &[disabled="true"] {
+    cursor: default;
+    pointer-events: none;
+    [icon][child-of=#{$jnt-pagination-host}] {
+      color: $pager-disabled-button-color;
+    }
+  }
+  [icon][child-of=#{$jnt-pagination-host}] {
+    font-size: $pager-icon-size;
+    color: $pager-icon-color;
+  }
+}
+

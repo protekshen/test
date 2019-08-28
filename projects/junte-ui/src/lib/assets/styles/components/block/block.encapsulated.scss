@@ -1,0 +1,96 @@
+@import "../../../styles/variables";
+
+$block-bg: $white-color !default;
+$block-shadow: $shadow-primary !default;
+$block-corner: $corner-normal !default;
+$block-border-width: 1px !default;
+$block-border-color: $gray-900 !default;
+$block-loading-bg: rgba(0, 0, 0, .75) !default;
+$block-loading-spinner-color: $white-color !default;
+
+$block-error-bg: rgba($gray-900, 0.8) !default;
+$block-error-icon-size: 40px !default;
+$block-error-icon-color: $white-color !default;
+
+$padding-tiny-name: 'tiny';
+$padding-small-name: 'small';
+$padding-normal-name: 'normal';
+$padding-big-name: 'big';
+$padding-large-name: 'large';
+$padding-huge-name: 'huge';
+
+$block-padding: (
+  #{$padding-tiny-name}: (
+    padding: $gutter-tiny
+  ),
+  #{$padding-small-name}: (
+    padding: $gutter-small
+  ),
+  #{$padding-normal-name}: (
+    padding: $gutter-normal
+  ),
+  #{$padding-big-name}: (
+    padding: $gutter-big
+  ),
+  #{$padding-large-name}: (
+    padding: $gutter-large
+  ),
+  #{$padding-huge-name}: (
+    padding: $gutter-huge
+  ),
+) !default;
+
+@mixin padding($size) {
+  padding: #{map-get($size, padding)};
+}
+
+jnt-block[host=#{$jnt-block-host}] {
+  display: inline-block;
+  position: relative;
+  min-height: 40px;
+  background-color: $block-bg;
+  box-shadow: $block-shadow;
+  border-radius: $block-corner;
+  box-sizing: border-box;
+  &[width="fluid"] {
+    width: 100%;
+  }
+  &[type="bordered"] {
+    border: $block-border-width solid $block-border-color;
+  }
+
+  @each $size, $map in $block-padding {
+    &[padding='#{$size}'] {
+      @include padding($map);
+    }
+  }
+
+  [loading][child-of=#{$jnt-block-host}], [error][child-of=#{$jnt-block-host}] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $block-corner;
+    [icon][child-of=#{$jnt-block-host}] {
+      color: $block-error-icon-color;
+    }
+  }
+
+  [loading][child-of=#{$jnt-block-host}] {
+    background-color: $block-loading-bg;
+    [spinner][child-of=#{$jnt-block-host}] {
+      border-color: $block-loading-spinner-color;
+    }
+  }
+
+  [error][child-of=#{$jnt-block-host}] {
+    background-color: $block-error-bg;
+    [icon][child-of=#{$jnt-block-host}] {
+      font-size: $block-error-icon-size;
+    }
+  }
+}

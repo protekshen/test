@@ -1,0 +1,67 @@
+<table>
+  <thead>
+  <tr [style.height.px]="heightIndicator" [style.min-height.px]="heightIndicator">
+    <th>
+      {{title}}
+    </th>
+    <th colspan="2">
+      {{metric}}
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <ng-container *ngIf="indicators.length; else noDataTemplate">
+    <tr *ngFor="let indicator of indicators; trackBy: trackByFn;" (click)="selected = indicator.data"
+        [attr.selected]="selected === indicator.data"
+        [style.height.px]="heightIndicator"
+        [style.max-height.px]="heightIndicator"
+        [style.min-height.px]="heightIndicator">
+      <td>
+        <ng-container *ngIf="indicator.titleTemplate; else indicatorTitle">
+          <div content [style.max-height.px]="heightIndicator - 1">
+            <ng-container *ngTemplateOutlet="indicator.titleTemplate"></ng-container>
+          </div>
+        </ng-container>
+        <ng-template #indicatorTitle>
+          {{indicator.title}}
+        </ng-template>
+      </td>
+      <td>
+        {{indicator.label}}
+      </td>
+      <td [style.background-color]="indicator.color | lightenDarkenColor : -20">
+        {{indicator.value | number: '1.0-0'}}%
+      </td>
+    </tr>
+  </ng-container>
+  </tbody>
+</table>
+
+<svg *ngIf="indicators.length"
+     [style.min-width]="widthMark + widthPoligon"
+     [attr.width]="widthMark + widthPoligon"
+     [attr.height]="heightSvg" xmlns="http://www.w3.org/2000/svg">
+
+  <ng-container *ngFor="let indicator of indicators; trackBy: trackByFn; let i = index; let first = first">
+    <polygon
+      [attr.points]="'0 ' + (first ? heightIndicator : heightIndicator * (i + 1)) + ' ' + widthPoligon + ' ' + (first ? 0 : (i - 1 | sumIndicators: indicators) | percentToNumber: heightSvg) + ' ' + widthPoligon + ' ' + ((i | sumIndicators: indicators) | percentToNumber: heightSvg) + ' 0 ' + heightIndicator * (i + 2)"
+      [attr.fill]="indicator.color | lightenDarkenColor: 10"></polygon>
+    <rect [attr.x]="widthPoligon"
+          [attr.y]="first ? 0 : (i - 1 | sumIndicators: indicators) | percentToNumber: heightSvg"
+          [attr.width]="widthMark"
+          [attr.height]="indicator.value | percentToNumber : heightSvg"
+          [attr.fill]="indicator.color">
+    </rect>
+  </ng-container>
+
+</svg>
+
+<ng-template #noDataTemplate>
+  <ng-container *ngIf="!progress.loading;">
+    <tr nodata>
+      <td [attr.colspan]="3">
+        <jnt-icon [icon]="ui.icons.stopping" icon></jnt-icon>
+      </td>
+    </tr>
+  </ng-container>
+</ng-template>

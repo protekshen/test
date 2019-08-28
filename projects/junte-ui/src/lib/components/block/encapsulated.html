@@ -1,0 +1,7 @@
+<ng-content></ng-content>
+<div child-of="jnt-block-host" *ngIf="loading" loading>
+  <jnt-spinner child-of="jnt-block-host" [size]="size" spinner></jnt-spinner>
+</div>
+<div child-of="jnt-block-host" *ngIf="error" error>
+  <jnt-icon child-of="jnt-block-host" icon="cancel"></jnt-icon>
+</div>

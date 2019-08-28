@@ -1,0 +1,2 @@
+<ng-container #group *ngFor="let indicator of indicators; let index = index" [ngTemplateOutlet]="indicator.template"
+              [ngTemplateOutletContext]="{size: size, indicator: indicator, indicators: indicators, index: index}"></ng-container>

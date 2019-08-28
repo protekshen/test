@@ -1,0 +1,21 @@
+<table child-of="jnt-skeleton-host" >
+  <tr child-of="jnt-skeleton-host" *ngIf="avatar">
+    <td child-of="jnt-skeleton-host" avatar>
+      <div child-of="jnt-skeleton-host" ></div>
+    </td>
+    <td child-of="jnt-skeleton-host" >
+      <jnt-stack child-of="jnt-skeleton-host" [gutter]="ui.stack.gutter.big">
+        <div child-of="jnt-skeleton-host" [jntAttr]="title ? 'title' : 'paragraph'"></div>
+        <div child-of="jnt-skeleton-host" paragraph></div>
+      </jnt-stack>
+    </td>
+  </tr>
+  <tr child-of="jnt-skeleton-host" >
+    <td child-of="jnt-skeleton-host" colspan="2">
+      <jnt-stack child-of="jnt-skeleton-host" [gutter]="ui.stack.gutter.big">
+        <div child-of="jnt-skeleton-host" *ngIf="title && !avatar" title></div>
+        <div child-of="jnt-skeleton-host" *ngFor="let l of line" paragraph></div>
+      </jnt-stack>
+    </td>
+  </tr>
+</table>

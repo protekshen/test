@@ -1,0 +1,87 @@
+@import "../../assets/styles/variables";
+
+$gantt-icon-nodata-size: 80px !default;
+$gantt-icon-nodata-color: $muted-color !default;
+$gantt-min-height: 200px !default;
+
+jnt-month-gantt[host=#{$jnt-month-gantt-host}] {
+  padding: $gutter-normal;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+table[child-of=#{$jnt-month-gantt-host}] {
+  width: 100%;
+
+  tbody[child-of=#{$jnt-month-gantt-host}] {
+    tr[child-of=#{$jnt-month-gantt-host}] {
+      &[nodata] {
+        height: $gantt-min-height;
+        pointer-events: none;
+        border-bottom: 0;
+
+        td[child-of=#{$jnt-month-gantt-host}] {
+          vertical-align: middle;
+          text-align: center;
+          border-left: 1px solid $gray-700;
+
+          [icon][child-of=#{$jnt-month-gantt-host}] {
+            font-size: $gantt-icon-nodata-size;
+            color: $gantt-icon-nodata-color;
+          }
+        }
+      }
+
+      &[loading] {
+        pointer-events: none;
+        border-bottom: 0;
+
+        td[child-of=#{$jnt-month-gantt-host}] {
+          border-left: 1px solid $gray-700;
+        }
+      }
+    }
+
+    td[child-of=#{$jnt-month-gantt-host}] {
+      border-bottom: 1px solid $gray-700;
+      border-right: 1px solid $gray-700;
+
+      &[controls] {
+        border-right: none;
+        padding: $gutter-tiny 0;
+
+        div[child-of=#{$jnt-month-gantt-host}] {
+          display: flex;
+          justify-content: space-around;
+
+          [month][child-of=#{$jnt-month-gantt-host}] {
+            flex: 1;
+            text-align: center;
+            font-weight: bold;
+          }
+        }
+      }
+
+      &[day] {
+        text-align: center;
+        font-size: $font-size-small;
+        min-width: 20px;
+
+        &[current='true'] {
+          color: $white-color;
+          background-color: $primary-color;
+        }
+      }
+
+      &[title] {
+        border-left: 1px solid $gray-700;
+      }
+
+      &[empty] {
+        border: none;
+      }
+    }
+  }
+
+
+}

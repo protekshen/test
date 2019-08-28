@@ -1,0 +1,71 @@
+@import "../projects/junte-ui/src/lib/assets/styles/variables";
+
+[block] {
+  color: $white-color;
+  text-align: center;
+  background-color: $primary-light-color;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+[row] {
+  background-color: $primary-background;
+}
+
+[col] {
+  color: $white-color;
+  text-align: center;
+  background-color: $primary-light-color;
+  padding: 20px 0;
+  border: 1px solid $primary-color;
+}
+
+ngx-prism {
+  width: 100%;
+}
+
+pre[class*="language-"] {
+  background-color: $primary-background !important;
+  width: 100%;
+  display: block;
+  padding: $gutter-small !important;
+  box-sizing: border-box;
+  code[class*="language-"] {
+    text-shadow: none !important;
+    color: $primary-text-color;
+    white-space: pre-wrap;
+  }
+  .token.operator {
+    background-color: transparent;
+  }
+}
+
+table[api] {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+
+  td, th {
+    padding: $gutter-normal;
+    border: 1px solid $gray-700;
+  }
+
+  th {
+    background-color: $secondary-background;
+  }
+
+  td:nth-child(1) {
+    width: 20%;
+  }
+
+  td:nth-child(4) {
+    width: 20%;
+  }
+
+  td:nth-child(3) {
+    color: $primary-text-color;
+    width: 40%;
+  }
+}
+
+

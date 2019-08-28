@@ -1,0 +1,29 @@
+@import "../../../styles/variables";
+
+$label-corner: 3px !default;
+$label-height: 24px !default;
+$label-padding-x: 0 !default;
+$label-padding-y: $gutter-small !default;
+$label-color: $white-color !default;
+$label-font-size: 12px !default;
+$label-icon-spacing: $gutter-small !default;
+
+jnt-label[host=#{$jnt-label-host}] {
+  display: inline-flex;
+  align-items: center;
+  border-radius: $label-corner;
+  padding: $label-padding-x $label-padding-y;
+  height: $label-height;
+  //color: $label-color;
+  font-size: $label-font-size;
+  box-sizing: border-box;
+}
+
+span[child-of=#{$jnt-label-host}] {
+  line-height: $label-height;
+  white-space: nowrap;
+}
+
+[icon][child-of=#{$jnt-label-host}] {
+  margin-right: $label-icon-spacing;
+}

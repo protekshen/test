@@ -1,0 +1,59 @@
+@import "../../../../../styles/variables";
+
+$calendar-week-day-width: 90px !default;
+$calendar-week-day-shadow: $shadow-primary !default;
+$calendar-week-day-bg: $white-color !default;
+$calendar-week-day-corner: $corner-normal !default;
+$calendar-week-current-day-width: 130px !default;
+$calendar-week-day-height: 110px !default;
+$calendar-week-current-day-height: 150px !default;
+
+$calendar-week-number-day-font-size: 1.625rem !default;
+$calendar-week-number-day-color: $primary-color !default;
+
+$calendar-week-name-day-color: $text-color !default;
+$calendar-week-name-day-font-size: $font-size-base !default;
+
+$calendar-week-metric-bg: $gray-500 !default;
+$calendar-week-metric-padding: $gutter-tiny !default;
+
+jnt-calendar-day[host=#{$jnt-calendar-day-host}] {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-width: $calendar-week-day-width;
+  max-width: $calendar-week-day-width;
+  min-height: $calendar-week-day-height;
+  box-shadow: $calendar-week-day-shadow;
+  background-color: $calendar-week-day-bg;
+  border-radius: $calendar-week-day-corner;
+}
+
+[date][child-of=#{$jnt-calendar-day-host}] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+}
+[number-day][child-of=#{$jnt-calendar-day-host}] {
+  font-size: $calendar-week-number-day-font-size;
+  color: $calendar-week-number-day-color;
+  font-weight: $font-weight-bold;
+}
+[name-day][child-of=#{$jnt-calendar-day-host}] {
+  color: $calendar-week-name-day-color;
+  font-size: $calendar-week-name-day-font-size;
+}
+[today][child-of=#{$jnt-calendar-day-host}] {
+  color: $primary-color;
+}
+[metric][child-of=#{$jnt-calendar-day-host}] {
+  background-color: $calendar-week-metric-bg;
+  padding: $calendar-week-metric-padding;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 0 0 $corner-normal $corner-normal;
+  text-align: center;
+}

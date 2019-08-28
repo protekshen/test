@@ -1,0 +1,117 @@
+<jnt-container>
+
+  <form [formGroup]="form">
+    <h1>Calendar</h1>
+    <jnt-stack resources [type]="ui.stack.type.horizontal">
+      <jnt-link [icon]="ui.icons.externalLink"
+                source="https://gitlab.com/junte/junte-ui/tree/master/projects/junte-ui/src/lib/components/calendar"
+                target="_blank" title="GitLab">
+      </jnt-link>
+      <jnt-link [icon]="ui.icons.externalLink"
+                source="https://www.figma.com/file/EIUNwZCXL9Nm5BKQKl43mfDr/Junte-UI-v1?node-id=1824%3A3416"
+                target="_blank" title="Figma">
+      </jnt-link>
+    </jnt-stack>
+    <h3>Requirements</h3>
+
+    <ol>
+      <li>The day and arrows in calendar should respond to mouse hover, click</li>
+      <li>Metrics can be added to the calendar</li>
+      <li>The current day should always be highlighted</li>
+      <li>The current week should be highlighted</li>
+      <li>Selected day should be highlighted</li>
+      <li>Weekend should be highlighted</li>
+    </ol>
+
+    <hr>
+
+    <jnt-block>
+      <jnt-calendar formControlName="dueDate" (updated)="period = $event">
+      </jnt-calendar>
+    </jnt-block>
+
+    <ngx-prism language="html">
+        <pre><![CDATA[
+<jnt-block>
+  <jnt-calendar formControlName="dueDate" (updated)="period = $event"></jnt-calendar>
+</jnt-block>
+          ]]></pre>
+    </ngx-prism>
+
+    <h3>Calendar with custom template day</h3>
+    <jnt-block>
+      <jnt-calendar formControlName="dueDate" (updated)="period = $event">
+        <ng-template #dayTemplate let-date="date">
+          <span style="color: blue">{{getDate(format(date))}}</span>
+        </ng-template>
+      </jnt-calendar>
+    </jnt-block>
+
+    <ngx-prism language="html">
+        <pre><![CDATA[
+<jnt-block>
+  <jnt-calendar formControlName="dueDate" (updated)="period = $event">
+    <ng-template #dayTemplate let-date="date">
+      <span style="color: blue">23</span>
+    </ng-template>
+  </jnt-calendar>
+</jnt-block>
+        ]]></pre>
+    </ngx-prism>
+
+    <h3>Calendar with Metrics</h3>
+    <jnt-block>
+      <jnt-calendar formControlName="dueDate" (updated)="period = $event">
+        <ng-template #metricTemplate let-metric="metric"
+                     let-date="date">
+          text
+        </ng-template>
+
+        <jnt-week-metric title="Test metric"></jnt-week-metric>
+      </jnt-calendar>
+    </jnt-block>
+
+    <ngx-prism language="html">
+        <pre><![CDATA[
+<jnt-block>
+  <jnt-calendar formControlName="dueDate" (updated)="period = $event">
+    <ng-template #metricTemplate let-metric="metric" let-date="date">
+      text
+    </ng-template>
+    <jnt-week-metric title="Test metric"></jnt-week-metric>
+  </jnt-calendar>
+</jnt-block>
+        ]]></pre>
+    </ngx-prism>
+
+    <h1>Calendar Week</h1>
+
+    <h3>Requirements</h3>
+
+    <ul>
+      <li>The day in calendar week should respond to mouse hover, click</li>
+      <li>The current day should always be highlighted</li>
+      <li>Change days occur using animation</li>
+    </ul>
+
+    <hr>
+
+      <jnt-calendar-week [period]="dueDate.value">
+      </jnt-calendar-week>
+
+    <ngx-prism language="html">
+        <pre><![CDATA[
+<jnt-calendar-week [period]="dueDate.value"></jnt-calendar-week>
+        ]]></pre>
+    </ngx-prism>
+
+    <h3>Calendar Week with custom template day</h3>
+    <jnt-calendar-week [period]="dueDate.value">
+      <ng-template #dayTemplate let-date="date">
+        <div>
+          <i style="border: 2px solid red; border-radius: 5px;">Test</i>
+        </div>
+      </ng-template>
+    </jnt-calendar-week>
+  </form>
+</jnt-container>

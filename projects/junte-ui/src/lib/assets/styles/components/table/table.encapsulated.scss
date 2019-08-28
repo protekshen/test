@@ -1,0 +1,118 @@
+@import "../../../styles/variables";
+
+$table-padding-x: $gutter-normal !default;
+$table-padding-y: $gutter-normal !default;
+$table-head-bg: $gray-500 !default;
+$table-row-border-color: $gray-400 !default;
+$table-cell-padding-x: $gutter-normal !default;
+$table-cell-padding-y: $gutter-big !default;
+$table-cell-border-width: 0 !default;
+$table-cell-border-color: transparent !default;
+$table-font-size: $font-size-base !default;
+$table-row-hover: $gray-light-100 !default;
+$table-icon-nodata-size: 80px !default;
+$table-icon-nodata-color: $gray-400 !default;
+$table-message-nodata-color: $gray-800 !default;
+$table-min-height: 200px !default;
+
+$table-loading-overlay-bg: rgba($gray-500, .6) !default;
+$table-loading-spinner-color: $gray-800 !default;
+
+jnt-table[host=#{$jnt-table-host}] {
+  display: block;
+  padding: $table-padding-x $table-padding-y;
+
+  [button][host=#{$jnt-button-host}][child-of=#{$jnt-table-host}] {
+    button[child-of=#{$jnt-button-host}] {
+      padding: 0;
+    }
+  }
+
+  [table][child-of=#{$jnt-table-host}] {
+    margin-left: -($table-padding-x);
+    margin-right: -($table-padding-x);
+  }
+
+  table[child-of=#{$jnt-table-host}] {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: $table-font-size;
+    position: relative;
+    [spinner][child-of=#{$jnt-table-host}] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-color: $table-loading-overlay-bg;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all .3s;
+      z-index: 1;
+      [icon][child-of=#{$jnt-table-host}] {
+        color: $table-loading-spinner-color;
+      }
+    }
+    thead[child-of=#{$jnt-table-host}] {
+      background-color: $table-head-bg;
+      .sortable {
+        cursor: pointer;
+      }
+    }
+    tbody[child-of=#{$jnt-table-host}] tr[child-of=#{$jnt-table-host}] {
+      border-bottom: 1px solid $table-row-border-color;
+      background-color: $white-color;
+      transition: all .3s;
+      &[nodata] {
+        height: $table-min-height;
+        pointer-events: none;
+        border-bottom: 0;
+        td[child-of=#{$jnt-table-host}] {
+          vertical-align: middle;
+          text-align: center;
+          [icon][child-of=#{$jnt-table-host}] {
+            font-size: $table-icon-nodata-size;
+            color: $table-icon-nodata-color;
+          }
+          [message][child-of=#{$jnt-table-host}] {
+            color: $table-message-nodata-color;
+          }
+        }
+      }
+      &[loading] {
+        pointer-events: none;
+        border-bottom: 0;
+      }
+      &:hover {
+        background-color: $table-row-hover;
+      }
+      td[child-of=#{$jnt-table-host}] {
+        &[action] {
+          width: 50px;
+        }
+      }
+    }
+    td[child-of=#{$jnt-table-host}], th[child-of=#{$jnt-table-host}] {
+      padding: $table-cell-padding-x $table-cell-padding-y;
+      border: $table-cell-border-width solid $table-cell-border-color;
+      box-sizing: border-box;
+    }
+  }
+
+  [pagination][child-of=#{$jnt-table-host}] {
+    position: relative;
+    margin-bottom: -($table-padding-x);
+    [pages][child-of=#{$jnt-table-host}] {
+      margin: auto;
+    }
+    [page-size][child-of=#{$jnt-table-host}] {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+

@@ -1,0 +1,7 @@
+<div child-of="jnt-tabs-host" tabs>
+  <div child-of="jnt-tabs-host" tab item *ngFor="let tab of tabItems" [attr.active]="tab.active" (click)="activatedTab(tab)" tabindex="0">
+    {{tab.title}}
+    <div child-of="jnt-tabs-host" bar></div>
+  </div>
+</div>
+<ng-content></ng-content>

@@ -1,0 +1,52 @@
+@import "../../assets/styles/variables";
+
+$link-decoration: none !default;
+$link-color: $primary-light-color !default;
+$link-font-weight: $font-weight-base !default;
+$link-font-size: 0.875rem !default;
+$link-hover-color: $primary-color !default;
+$link-active-color: $primary-color !default;
+$link-disabled-color: $primary-text-light-color !default;
+$link-icon-spacing: $gutter-small !default;
+$link-badge-spacing: $gutter-small !default;
+
+jnt-link[host=#{$jnt-link-host}] {
+  display: inline-block;
+  &[disabled="true"] {
+    [link][child-of=#{$jnt-link-host}] {
+      color: $link-disabled-color;
+      pointer-events: none;
+      cursor: default;
+    }
+  }
+}
+
+[link][child-of=#{$jnt-link-host}] {
+  display: flex;
+  align-items: center;
+  text-decoration: $link-decoration;
+  box-sizing: border-box;
+  [icon][child-of=#{$jnt-link-host}], span[child-of=#{$jnt-link-host}] {
+    color: $link-color;
+    font-weight: $link-font-weight;
+    font-size: $link-font-size;
+    transition: color .3s;
+    text-align: left;
+  }
+  &[active="true"] {
+    span[child-of=#{$jnt-link-host}] {
+      border-bottom: 1px solid $link-color;
+    }
+  }
+  &:active {
+    [icon][child-of=#{$jnt-link-host}], span[child-of=#{$jnt-link-host}] {
+      color: $link-active-color;
+    }
+  }
+  &:hover {
+    [icon][child-of=#{$jnt-link-host}], span[child-of=#{$jnt-link-host}] {
+      color: $link-hover-color;
+    }
+  }
+}
+

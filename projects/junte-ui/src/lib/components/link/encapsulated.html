@@ -1,0 +1,20 @@
+<ng-container *ngIf="externalLink; else internalLink">
+  <a child-of="jnt-link-host" link [href]="source" [target]="allowTarget ? target : targetDefault">
+    <jnt-icon child-of="jnt-link-host" *ngIf="icon" [icon]="icon" icon></jnt-icon>
+    <span child-of="jnt-link-host" ><ng-container *ngTemplateOutlet="contentTemplate"></ng-container></span>
+    <jnt-badge child-of="jnt-link-host" *ngIf="badge" [scheme]="scheme" [count]="badge" [position]="ui.position.inline" badge></jnt-badge>
+  </a>
+</ng-container>
+
+<ng-template #internalLink>
+  <a child-of="jnt-link-host" link [routerLink]="source" #link="routerLinkActive" routerLinkActive
+     [routerLinkActiveOptions]="{exact: exact}" [attr.active]="link.isActive">
+    <jnt-icon child-of="jnt-link-host" *ngIf="icon" [icon]="icon" icon></jnt-icon>
+    <span child-of="jnt-link-host" ><ng-container *ngTemplateOutlet="contentTemplate"></ng-container></span>
+    <jnt-badge child-of="jnt-link-host" *ngIf="badge" [scheme]="scheme" [count]="badge" [position]="ui.position.inline" badge></jnt-badge>
+  </a>
+</ng-template>
+
+<ng-template #contentTemplate>
+  <ng-content></ng-content>
+</ng-template>

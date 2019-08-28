@@ -1,0 +1,28 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/components/app-layout/common.encapsulated";
+
+$app-sub-header-content-margin-left: $gutter-normal !default;
+$app-sub-header-burger-margin-left: $gutter-normal !default;
+
+jnt-app-sub-header[host=#{$jnt-app-sub-header-host}] {
+  display: flex;
+  align-items: center;
+  min-height: $app-sub-header-height;
+
+  @media (max-width: 767px) {
+    [burger][child-of=#{$jnt-app-sub-header-host}] {
+      display: inline-block;
+    }
+  }
+}
+
+[burger][child-of=#{$jnt-app-sub-header-host}] {
+  display: none;
+  margin-left: $app-sub-header-burger-margin-left;
+}
+
+[content][child-of=#{$jnt-app-sub-header-host}] {
+  margin-left: $app-sub-header-content-margin-left;
+}
+
+

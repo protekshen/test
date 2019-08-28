@@ -1,0 +1,5 @@
+@import "../../../../styles/variables";
+
+jnt-app-main[host=#{$jnt-app-main-host}] {
+  display: flex;
+}

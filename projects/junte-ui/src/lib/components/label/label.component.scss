@@ -1,0 +1,28 @@
+@import "../../assets/styles/variables";
+
+$label-corner: 3px !default;
+$label-height: 24px !default;
+$label-padding-x: 0 !default;
+$label-padding-y: $gutter-small !default;
+$label-font-size: 12px !default;
+$label-icon-spacing: $gutter-small !default;
+
+:host {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $label-corner;
+  padding: $label-padding-x $label-padding-y;
+  height: $label-height;
+  font-size: $label-font-size;
+  box-sizing: border-box;
+}
+
+span {
+  line-height: $label-height;
+  white-space: nowrap;
+}
+
+[icon] {
+  margin-right: $label-icon-spacing;
+}

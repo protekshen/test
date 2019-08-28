@@ -1,0 +1,91 @@
+<jnt-container>
+  <h1>Checkbox</h1>
+  <jnt-stack resources [type]="ui.stack.type.horizontal">
+    <jnt-link [icon]="ui.icons.externalLink"
+              source="https://gitlab.com/junte/junte-ui/tree/master/projects/junte-ui/src/lib/components/checkbox"
+              target="_blank" title="GitLab">
+    </jnt-link>
+    <jnt-link [icon]="ui.icons.externalLink"
+              source="https://www.figma.com/file/EIUNwZCXL9Nm5BKQKl43mfDr/Junte-UI-v1?node-id=2570%3A2779"
+              target="_blank" title="Figma">
+    </jnt-link>
+  </jnt-stack>
+  <h3>Requirements</h3>
+
+  <ol>
+
+    <li>The checkbox should change the display when it is disabled and disabled & checked</li>
+    <li>The checkbox should respond to mouse hover, click</li>
+
+  </ol>
+
+  <hr>
+
+  <jnt-stack [type]="ui.stack.type.vertical">
+    <ng-container *ngFor="let size of [ui.sizes.tiny, ui.sizes.small, ui.sizes.normal, ui.sizes.large]">
+      <jnt-checkbox label="Checkbox" [size]="size"></jnt-checkbox>
+      <jnt-checkbox [checked]="true" label="Checkbox checked" [size]="size"></jnt-checkbox>
+      <jnt-checkbox [disabled]="true" label="Checkbox disabled" [size]="size"></jnt-checkbox>
+      <jnt-checkbox [checked]="true" [disabled]="true" label="Checkbox disabled & checked" [size]="size"></jnt-checkbox>
+      <br>
+    </ng-container>
+  </jnt-stack>
+
+  <ngx-prism language="html">
+<pre><![CDATA[
+  <jnt-checkbox [checked]="true" [disabled]="false" label="Checkbox" [size]="ui.sizes.large"></jnt-checkbox>
+]]></pre>
+  </ngx-prism>
+
+  <jnt-stack [type]="ui.stack.type.vertical">
+    <h4>Checkbox Group</h4>
+    <span>Selected: {{selected | json}}</span>
+    <jnt-checkbox-group [(ngModel)]="selected">
+      <jnt-stack [type]="ui.stack.type.vertical" [gutter]="ui.stack.gutter.normal">
+        <jnt-checkbox [value]="1" label="Checkbox 1"></jnt-checkbox>
+        <jnt-checkbox [value]="2" label="Checkbox 2"></jnt-checkbox>
+        <jnt-checkbox [value]="3" label="Checkbox 3"></jnt-checkbox>
+      </jnt-stack>
+    </jnt-checkbox-group>
+  </jnt-stack>
+
+  <h3>API</h3>
+  <h4>jnt-checkbox</h4>
+  <table api>
+    <thead>
+    <tr>
+      <th>Property</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>[checked]</td>
+      <td>-</td>
+      <td>true | false</td>
+      <td>false</td>
+    </tr>
+    <tr>
+      <td>[disabled]</td>
+      <td>-</td>
+      <td>true | false</td>
+      <td>false</td>
+    </tr>
+    <tr>
+      <td>[label]</td>
+      <td>-</td>
+      <td>string</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>[size]</td>
+      <td>-</td>
+      <td>tiny | small | normal | large</td>
+      <td>normal</td>
+    </tr>
+    </tbody>
+  </table>
+
+</jnt-container>

@@ -1,0 +1,25 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/components/app-layout/common.encapsulated";
+
+$app-content-padding-left: $app-aside-width !default;
+$app-content-padding-top: $app-header-height !default;
+
+jnt-app-content[host=#{$jnt-app-content-host}] {
+  display: block;
+  flex: auto;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  z-index: 1;
+  padding-top: $app-content-padding-top;
+  &[with-aside="true"] {
+    padding-left: $app-content-padding-left;
+  }
+
+  @media screen and (max-width: map-get($grid-breakpoints, tablet)) {
+    &[with-aside="true"] {
+      padding-left: 0;
+    }
+  }
+}

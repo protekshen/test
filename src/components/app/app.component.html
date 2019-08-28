@@ -1,0 +1,24 @@
+<jnt-modal #modal [backdrop]="backdrop"></jnt-modal>
+<jnt-popover #popover></jnt-popover>
+<jnt-app-layout #layout>
+
+  <jnt-app-header>
+    <ng-template #logo>
+      <img [src]="'assets/image/logo-' + theme + '.svg'" logo>
+    </ng-template>
+    <ng-template #topMenu>
+      <jnt-menu>
+        <jnt-menu-item title="Home" [link]="['/home']" [matching]="ui.menu.matching.wildcard"></jnt-menu-item>
+        <jnt-menu-item title="Documentation" [link]="['/documentation']"
+                       [matching]="ui.menu.matching.wildcard">
+        </jnt-menu-item>
+        <jnt-menu-item title="GitLab" [link]="['/gitlab']" [matching]="ui.menu.matching.wildcard"></jnt-menu-item>
+        <jnt-menu-item title="Contacts" [link]="['/contacts']" [matching]="ui.menu.matching.wildcard"></jnt-menu-item>
+      </jnt-menu>
+    </ng-template>
+    <jnt-form [formGroup]="themeForm">
+      <jnt-theme-switcher formControlName="theme"></jnt-theme-switcher>
+    </jnt-form>
+  </jnt-app-header>
+  <router-outlet></router-outlet>
+</jnt-app-layout>

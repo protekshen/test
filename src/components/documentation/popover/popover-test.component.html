@@ -1,0 +1,210 @@
+<jnt-container>
+  <h1>Popover</h1>
+  <jnt-stack resources [type]="ui.stack.type.horizontal">
+    <jnt-link [icon]="ui.icons.externalLink"
+              source="https://gitlab.com/junte/junte-ui/tree/master/projects/junte-ui/src/lib/components/popover"
+              target="_blank" title="GitLab">
+    </jnt-link>
+    <jnt-link [icon]="ui.icons.externalLink"
+              source="https://www.figma.com/file/EIUNwZCXL9Nm5BKQKl43mfDr/Junte-UI?node-id=56%3A9"
+              target="_blank" title="Figma">
+    </jnt-link>
+  </jnt-stack>
+  <h3>Requirements</h3>
+
+  <ol>
+    <li>The popover should have content (and title manually)</li>
+    <li>The popover should listen to mouse hover, click or focus of host element</li>
+    <li>The popover should use string or custom template for content or title</li>
+    <li>The popover should open in one of 12 placements</li>
+    <li>The popover should have mouse enter and leave delays</li>
+  </ol>
+
+  <hr>
+
+  <jnt-stack [type]="ui.stack.type.vertical">
+    <jnt-stack [type]="ui.stack.type.horizontal">
+      <!--<jnt-button [jntPopover]="{title: 'Title', content: 'Click content', trigger: ui.popover.trigger.click}"-->
+      <!--text="Click me">-->
+      <!--</jnt-button>-->
+      <jnt-button [jntPopover]="{content: 'Without title', trigger: ui.popover.trigger.click}"
+                  text="Without title">
+      </jnt-button>
+      <!--<jnt-button [jntPopover]="{title: 'Mouse enter delay', content: 'Enter delay 1 sec',-->
+      <!--enterDelay: 1, trigger: ui.popover.trigger.hover}"-->
+      <!--text="Enter delay">-->
+      <!--</jnt-button>-->
+      <!--<jnt-button [jntPopover]="{title: 'Mouse leave delay', content: 'Leave delay 1 sec',-->
+      <!--leaveDelay: 1, trigger: ui.popover.trigger.hover}"-->
+      <!--text="Leave delay">-->
+      <!--</jnt-button>-->
+      <!--<jnt-button [jntPopover]="{title: 'Custom', content: content, trigger: ui.popover.trigger.hover}"-->
+      <!--text="Custom content">-->
+      <!--</jnt-button>-->
+
+      <ng-template #content>
+        <jnt-stack [type]="ui.stack.type.vertical">
+          <jnt-link>"It is custom content!</jnt-link>
+          <jnt-stack [type]="ui.stack.type.horizontal">
+            <jnt-button text="Ok"></jnt-button>
+            <jnt-button text="Cancel"></jnt-button>
+          </jnt-stack>
+        </jnt-stack>
+      </ng-template>
+    </jnt-stack>
+    <jnt-input [(ngModel)]="title"></jnt-input>
+    <jnt-button [jntPopover]="{title: title, content: 'Content', trigger: ui.popover.trigger.hover}"
+                text="Changed title">
+    </jnt-button>
+  </jnt-stack>
+  <hr>
+  <h4>Placements</h4>
+  <jnt-row [justify]="ui.flex.justify.center">
+    <jnt-stack [align]="ui.flex.align.stretch" placements>
+
+      <jnt-stack [type]="ui.stack.type.horizontal" [justify]="ui.flex.justify.center" stack>
+        <ng-container
+          *ngFor="let pos of [ui.popover.position.topLeft, ui.popover.position.top, ui.popover.position.topRight]">
+          <jnt-button [size]="ui.sizes.large"
+                      [jntPopover]="{title: pos, content: lorem, trigger: ui.popover.trigger.hover, placement: pos}"
+                      [text]="pos">
+          </jnt-button>
+        </ng-container>
+      </jnt-stack>
+
+      <jnt-stack [type]="ui.type.horizontal" [justify]="ui.flex.justify.between" stack>
+        <ng-container *ngFor="let pos of [ui.popover.position.leftTop, ui.popover.position.rightTop]">
+          <jnt-button [size]="ui.sizes.large"
+                      [jntPopover]="{title: pos, content: lorem, trigger: ui.popover.trigger.hover, placement: pos}"
+                      [text]="pos">
+          </jnt-button>
+        </ng-container>
+      </jnt-stack>
+
+      <jnt-stack [type]="ui.type.horizontal" [justify]="ui.flex.justify.between" stack>
+        <ng-container *ngFor="let pos of [ui.popover.position.left, ui.popover.position.right]">
+          <jnt-button [size]="ui.sizes.large"
+                      [jntPopover]="{title: pos, content: lorem, trigger: ui.popover.trigger.hover, placement: pos}"
+                      [text]="pos">
+          </jnt-button>
+        </ng-container>
+
+      </jnt-stack>
+
+      <jnt-stack [type]="ui.type.horizontal" [justify]="ui.flex.justify.between" stack>
+        <ng-container *ngFor="let pos of [ui.popover.position.leftBottom, ui.popover.position.rightBottom]">
+          <jnt-button [size]="ui.sizes.large"
+                      [jntPopover]="{title: pos, content: lorem, trigger: ui.popover.trigger.hover, placement: pos}"
+                      [text]="pos">
+          </jnt-button>
+        </ng-container>
+      </jnt-stack>
+
+      <jnt-stack [type]="ui.stack.type.horizontal" [justify]="ui.flex.justify.center" stack>
+        <ng-container
+          *ngFor="let pos of [ui.popover.position.bottomLeft, ui.popover.position.bottom, ui.popover.position.bottomRight]">
+          <jnt-button [size]="ui.sizes.large"
+                      [jntPopover]="{title: pos, content: lorem, trigger: ui.popover.trigger.hover, placement: pos}"
+                      [text]="pos">
+          </jnt-button>
+        </ng-container>
+      </jnt-stack>
+    </jnt-stack>
+  </jnt-row>
+
+  <ng-template #lorem>
+    <div>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+      standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+      a type specimen book.
+    </div>
+  </ng-template>
+
+  <ngx-prism language="html">
+<pre><![CDATA[
+  <jnt-button [jntPopover]="{title: 'Title', content: 'Click content', trigger: ui.popover.trigger.click}"
+              text="Click me">
+   </jnt-button>
+   <jnt-button [jntPopover]="{content: 'Without title', trigger: ui.popover.trigger.hover}"
+               text="Without title">
+   </jnt-button>
+   <jnt-button [jntPopover]="{title: 'Mouse enter delay', content: 'Enter delay 1 sec',
+        enterDelay: 1, trigger: ui.popover.trigger.hover}"
+               text="Enter delay">
+   </jnt-button>
+   <jnt-button [jntPopover]="{title: 'Mouse leave delay', content: 'Leave delay 1 sec',
+        leaveDelay: 1, trigger: ui.popover.trigger.hover}"
+               text="Leave delay">
+   </jnt-button>
+   <jnt-button [jntPopover]="{title: 'Custom', content: content, trigger: ui.popover.trigger.hover}"
+               text="Custom content">
+   </jnt-button>
+
+  <ng-template #content>
+     <jnt-stack [type]="ui.stack.type.vertical">
+        <jnt-link>"It is custom content!</jnt-link>
+        <jnt-stack [type]="ui.stack.type.horizontal">
+          <jnt-button text="Ok"></jnt-button>
+          <jnt-button text="Cancel"></jnt-button>
+        </jnt-stack>
+     </jnt-stack>
+  </ng-template>
+      ]]></pre>
+  </ngx-prism>
+
+  <h3>API</h3>
+  <h4>[jntPopover]=&#123;...&#125;</h4>
+  <table api>
+    <thead>
+    <tr>
+      <th>Property</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>title</td>
+      <td>-</td>
+      <td>string</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>content</td>
+      <td>-</td>
+      <td>string | TemplateRef</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>trigger</td>
+      <td>ui.popover.trigger</td>
+      <td>hover | click | focus</td>
+      <td>hover</td>
+    </tr>
+    <tr>
+      <td>placement</td>
+      <td>ui.popover.placement</td>
+      <td>
+        top | top-left | top-right<br>
+        left | left-top | left-bottom<br>
+        bottom | bottom-left | bottom-right<br>
+        right | right-top | right-bottom<br>
+      </td>
+      <td>top</td>
+    </tr>
+    <tr>
+      <td>enterDelay</td>
+      <td>seconds</td>
+      <td>number</td>
+      <td>0.15</td>
+    </tr>
+    <tr>
+      <td>leaveDelay</td>
+      <td>seconds</td>
+      <td>number</td>
+      <td>0.15</td>
+    </tr>
+    </tbody>
+  </table>
+</jnt-container>

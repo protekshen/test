@@ -1,0 +1,99 @@
+<jnt-container>
+  <h1>Stack</h1>
+  <jnt-stack resources [type]="ui.stack.type.horizontal">
+    <jnt-link [icon]="ui.icons.externalLink"
+              source="https://gitlab.com/junte/junte-ui/tree/master/projects/junte-ui/src/lib/components/stack"
+              target="_blank" title="GitLab">
+    </jnt-link>
+    <jnt-link [icon]="ui.icons.externalLink"
+              source="https://www.figma.com/file/EIUNwZCXL9Nm5BKQKl43mfDr/Junte-UI-v1?node-id=2178%3A2453"
+              target="_blank" title="Figma">
+    </jnt-link>
+  </jnt-stack>
+  <p>A stack organizes a list of elements using common rules.<br>
+    The main feature of the stack is gutters - distances between elements are created using UI aesthetics 🚀</p>
+
+  <h3>Requirements</h3>
+
+  <ol>
+    <li>The stack should be of two types: <b>vertical</b> and <b>horizontal</b>.</li>
+    <li>Alignment in stack should be with the use of <b>flexbox</b>.</li>
+    <li>The stack must have different gutters: <b>tiny</b>, <b>small</b>, <b>normal</b>, <b>big</b>, <b>large</b>, <b>huge</b>.</li>
+  </ol>
+
+  <hr>
+
+  <h2>Vertical</h2>
+  <jnt-row>
+    <jnt-col [span]="2"
+             *ngFor="let gutter of [ui.stack.gutter.tiny, ui.stack.gutter.small, ui.stack.gutter.normal, ui.stack.gutter.big,
+                ui.stack.gutter.large, ui.stack.gutter.huge]">
+      <jnt-stack [gutter]="gutter">
+        <div block *ngFor="let element of [1, 2]">{{gutter}}</div>
+      </jnt-stack>
+    </jnt-col>
+  </jnt-row>
+
+  <h2>Horizontal</h2>
+  <jnt-stack [gutter]="ui.stack.gutter.large">
+    <jnt-stack [gutter]="gutter" [type]="ui.stack.type.horizontal"
+               *ngFor="let gutter of [ui.stack.gutter.tiny, ui.stack.gutter.small, ui.stack.gutter.normal, ui.stack.gutter.big,
+                ui.stack.gutter.large, ui.stack.gutter.huge]">
+      <div block *ngFor="let col of [1, 2]">{{gutter}}</div>
+    </jnt-stack>
+  </jnt-stack>
+
+  <ngx-prism language="html">
+<pre><![CDATA[
+<jnt-stack [type]="ui.stack.type.horizontal" [gutter]="ui.stack.gutter.small">
+  <div>small</div>
+</jnt-stack>
+]]></pre>
+  </ngx-prism>
+
+  <h3>API</h3>
+  <h4>jnt-stack</h4>
+  <table api>
+    <thead>
+    <tr>
+      <th>Property</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>[type]</td>
+      <td>-</td>
+      <td>vertical | horizontal</td>
+      <td>vertical</td>
+    </tr>
+    <tr>
+      <td>[gutter]</td>
+      <td>-</td>
+      <td>small | normal | large</td>
+      <td>normal</td>
+    </tr>
+    <tr>
+      <td>[justify]</td>
+      <td>-</td>
+      <td>start | end | around | between | evenly</td>
+      <td>start</td>
+    </tr>
+    <tr>
+      <td>[align]</td>
+      <td>-</td>
+      <td>start | end | stretch | baseline | center</td>
+      <td>stretch</td>
+    </tr>
+    <tr>
+      <td>[wrap]</td>
+      <td>-</td>
+      <td>wrap | noWrap | reverse</td>
+      <td>wrap</td>
+    </tr>
+    </tbody>
+  </table>
+
+</jnt-container>

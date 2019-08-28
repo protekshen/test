@@ -1,0 +1,242 @@
+@import "../../../styles/variables";
+@import "../../../styles/components/form/common.encapsulated";
+
+$option-list-spacer-top: $gutter-tiny !default;
+$option-list-padding-y: 0 !default;
+$option-list-padding-x: $gutter-tiny !default;
+$option-list-border-color: transparent !default;
+$option-list-border-width: 0 !default;
+$option-list-bg: $white-color !default;
+$option-list-shadow: $shadow-light !default;
+
+$option-item-padding-x: $gutter-small !default;
+$option-item-padding-y: $gutter-normal !default;
+$option-item-hover-bg: $gray-500 !default;
+$option-item-icon-color: $primary-color !default;
+
+$select-border-width: 1px !default;
+$select-border-color: $gray-600 !default;
+$select-corner: $corner-small !default;
+$select-icon-dropdown-size: 7px !default;
+$select-icon-dropdown-color: $gray-800 !default;
+$select-placeholder-color: $gray-600 !default;
+$select-padding-bottom: $gutter-tiny !default;
+$select-padding-left: $gutter-tiny !default;
+$select-padding-right: $gutter-normal !default;
+
+$select-focus-shadow: $shadow-primary-dark !default;
+
+$select-hover-border-color: $primary-color !default;
+$select-focus-border-color: $primary-color !default;
+
+$chips-bg: $gray-500 !default;
+$chips-corner: $select-corner !default;
+$chips-padding-x: $gutter-tiny !default;
+$chips-padding-y: $gutter-tiny !default;
+$chips-spacer: $gutter-tiny !default;
+
+$select-sizes: (
+  #{$size-small}: (
+    font-size: 11px,
+    min-height: 30px
+  ),
+  #{$size-normal}: (
+    font-size: 14px,
+    min-height: 38px
+  ),
+  #{$size-large}: (
+    font-size: 16px,
+    min-height: 50px
+  )
+)!default;
+
+@mixin size($size) {
+  [selectize][child-of=#{$jnt-select-host}] {
+    font-size: #{map-get($size, font-size)};
+    min-height: #{map-get($size, min-height)};
+  }
+}
+
+jnt-select[host=#{$jnt-select-host}] {
+  display: inline-block;
+  width: 100%;
+  @each $size, $map in $select-sizes {
+    &[size='#{$size}'] {
+      @include size($map);
+    }
+  }
+}
+
+[selectize][child-of=#{$jnt-select-host}] {
+  border: $select-border-width solid $select-border-color;
+  border-radius: $select-corner;
+  box-sizing: border-box;
+  padding-bottom: 3px;
+  padding-top: 3px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: stretch;
+  background-color: $white-color;
+  transition: all .3s;
+  &:hover {
+    border-color: $select-hover-border-color;
+  }
+  &[focused="true"] {
+    border-color: $select-hover-border-color;
+    box-shadow: $select-focus-shadow;
+    outline: 0;
+  }
+
+  [placeholder][child-of=#{$jnt-select-host}] {
+    display: flex;
+    color: $select-placeholder-color;
+  }
+
+  [selection][child-of=#{$jnt-select-host}] {
+    margin-bottom: -3px;
+    margin-left: $select-padding-left;
+    margin-right: $select-padding-right;
+    display: flex;
+    flex-wrap: wrap;
+    li[child-of=#{$jnt-select-host}] {
+      max-width: 100%;
+      margin-bottom: $chips-spacer;
+      display: flex;
+      align-items: center;
+      margin-right: $chips-spacer;
+      button[child-of=#{$jnt-select-host}] {
+        display: none;
+      }
+      &[chips="true"] {
+        background-color: $chips-bg;
+        border-radius: $chips-corner;
+        padding: $chips-padding-x $chips-padding-y;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        button[child-of=#{$jnt-select-host}] {
+          display: inline-block;
+          border: 0;
+          background-color: transparent;
+          padding: 0 $gutter-small 0 $gutter-normal;
+          line-height: 1;
+          &:focus {
+            outline: 0;
+          }
+          [close][child-of=#{$jnt-select-host}] {
+            font-size: 7px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+  [down][child-of=#{$jnt-select-host}] {
+    position: absolute;
+    top: 50%;
+    right: $select-padding-left;
+    transform: translateY(-50%);
+    font-size: $select-icon-dropdown-size;
+    color: $select-icon-dropdown-color;
+  }
+  [spin][child-of=#{$jnt-select-host}] {
+    color: $gray-400;
+    margin: auto auto auto $gutter-normal;
+  }
+  [input][child-of=#{$jnt-select-host}] {
+    max-width: 100%;
+    width: 10px;
+    height: 100%;
+    box-sizing: border-box;
+    font-size: $font-size-base;
+    border: 0;
+    padding: 0;
+    &:focus {
+      outline: 0;
+    }
+  }
+
+}
+[label][child-of=#{$jnt-select-host}] {
+  background-color: $form-control-label-bg;
+  padding: $form-control-label-padding-x $form-control-label-padding-y;
+  margin-top: -3px;
+  margin-bottom: -3px;
+  display: flex;
+  align-items: center;
+  border-top-left-radius: $select-corner - 1px;
+  border-bottom-left-radius: $select-corner - 1px;
+  color: $form-control-label-color;
+  margin-right: $form-control-label-spacing;
+}
+
+[options][child-of=#{$jnt-select-host}] {
+  border: $option-list-border-width solid $option-list-border-color;
+  background-color: $option-list-bg;
+  box-shadow: $option-list-shadow;
+  box-sizing: border-box;
+  margin-top: $option-list-spacer-top;
+  padding: $option-list-padding-x $option-list-padding-y;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  max-height: 300px;
+  overflow-y: auto;
+  [item][child-of=#{$jnt-select-host}] {
+    padding: $option-item-padding-x $option-item-padding-y;
+    [checkbox][host=#{$jnt-checkbox-host}][child-of=#{$jnt-select-host}] [ switch ][child-of=#{$jnt-checkbox-host}] {
+      border: 0;
+      background-color: transparent;
+      position: absolute;
+      right: 0;
+    [icon][child-of=#{$jnt-checkbox-host}] {
+      color: $option-item-icon-color;
+    }
+  }
+    &:hover {
+      background-color: $option-item-hover-bg;
+    }
+  }
+  [message][child-of=#{$jnt-select-host}] {
+    padding: $chips-padding-x $chips-padding-y;
+    min-height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    [icon][child-of=#{$jnt-select-host}] {
+      color: $gray-400;
+      font-size: 30px;
+    }
+  }
+  [loading][child-of=#{$jnt-select-host}] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+ul[child-of=#{$jnt-select-host}] {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+[overlay][child-of=#{$jnt-select-host}] {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+}
+
+
+

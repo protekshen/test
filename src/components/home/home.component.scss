@@ -1,0 +1,13 @@
+@import "../../../projects/junte-ui/src/lib/assets/styles/variables";
+
+:host {
+  display: block;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+h3 {
+  color: $primary-color;
+}

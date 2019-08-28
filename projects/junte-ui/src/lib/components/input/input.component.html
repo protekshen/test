@@ -1,0 +1,9 @@
+<jnt-icon *ngIf="icon" [icon]="icon" icon></jnt-icon>
+<div *ngIf="label" label>{{label}}</div>
+
+<input name="input"
+       [type]="type"
+       [(ngModel)]="value"
+       [placeholder]="placeholder"
+       [disabled]="disabled"
+       (keyup)="onChange(value)">

@@ -1,0 +1,7 @@
+@import "../../../../styles/variables";
+
+jnt-bar-indicator-group[host=#{$jnt-bar-indicator-group-host}] {
+  display: block;
+  position: relative;
+}
+

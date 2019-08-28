@@ -1,0 +1,22 @@
+@import "../../../styles/variables";
+@import "../../../styles/common";
+
+jnt-dropdown[host=#{$jnt-dropdown-host}] {
+  display: inline-block;
+  position: relative;
+  &[toggle='true'] {
+    @include opened();
+  }
+
+}
+
+[overlay][child-of=#{$jnt-dropdown-host}] {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+}
+
+

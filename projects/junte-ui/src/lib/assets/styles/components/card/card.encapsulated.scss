@@ -1,0 +1,5 @@
+@import "../../../styles/variables";
+
+jnt-card[host=#{$jnt-card-host}] {
+  display: block;
+}

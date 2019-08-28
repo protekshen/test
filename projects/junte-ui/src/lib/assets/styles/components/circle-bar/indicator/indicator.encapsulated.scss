@@ -1,0 +1,53 @@
+@import "../../../../styles/variables";
+
+jnt-bar-indicator[host=#{$jnt-bar-indicator-host}] {
+  display: block;
+  position: relative;
+}
+
+[circle][child-of=#{$jnt-bar-indicator-host}] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  //background-color: $gray-700;
+  border-radius: 50%;
+  [overlay][child-of=#{$jnt-bar-indicator-host}] {
+    border: none;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    text-align: center;
+    display: block;
+    border-radius: 50%;
+    background-color: white;
+    content: "";
+  }
+  [first50-bar][child-of=#{$jnt-bar-indicator-host}] {
+    display: none;
+  }
+  &[over50="true"] {
+    [first50-bar][child-of=#{$jnt-bar-indicator-host}] {
+      display: block;
+      position: absolute;
+      //background-color: $primary-color;
+      border-radius: 50%;
+    }
+  }
+  span[child-of=#{$jnt-bar-indicator-host}] {
+    position: absolute;
+    text-align: center;
+    display: block;
+    color: $primary-color;
+    z-index: 2;
+  }
+  [left-half][child-of=#{$jnt-bar-indicator-host}] {
+    border-radius: 50%;
+    position: absolute;
+    [value-bar][child-of=#{$jnt-bar-indicator-host}] {
+      position: absolute;
+      border-radius: 50%;
+      border: 3px solid $primary-color;
+      box-sizing: border-box;
+    }
+  }
+}

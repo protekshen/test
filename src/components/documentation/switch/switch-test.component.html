@@ -1,0 +1,105 @@
+<jnt-container>
+  <h1>Switch</h1>
+  <jnt-stack resources [type]="ui.stack.type.horizontal">
+    <jnt-link [icon]="ui.icons.externalLink"
+              source="https://gitlab.com/junte/junte-ui/tree/master/projects/junte-ui/src/lib/components/switch"
+              target="_blank" title="GitLab">
+    </jnt-link>
+    <jnt-link [icon]="ui.icons.externalLink"
+              source="https://www.figma.com/file/EIUNwZCXL9Nm5BKQKl43mfDr/Junte-UI-v1?node-id=2570%3A2784"
+              target="_blank" title="Figma">
+    </jnt-link>
+  </jnt-stack>
+  <h3>Requirements</h3>
+
+  <ol>
+    <li>The switch should show the loading</li>
+    <li>The switch should respond to mouse hover, click</li>
+    <li>The button should change the display when it is disabled and disabled & checked</li>
+  </ol>
+
+  <hr>
+
+  <jnt-stack [type]="ui.stack.type.vertical">
+    <ng-container *ngFor="let size of [ui.sizes.tiny, ui.sizes.small, ui.sizes.normal, ui.sizes.large]">
+      <jnt-switch label="Switch" [size]="size"></jnt-switch>
+      <jnt-switch [(ngModel)]="checked" label="Switch checked" [size]="size" name="checked"></jnt-switch>
+      <jnt-switch [disabled]="true" label="Switch disabled" [size]="size" name="disabled"></jnt-switch>
+      <jnt-switch [(ngModel)]="checked" [disabled]="true" name="checked_disabled"
+                  label="Switch disabled & checked" [size]="size">
+      </jnt-switch>
+      <br>
+    </ng-container>
+  </jnt-stack>
+
+  <form [formGroup]="switchForm">
+    <jnt-switch label="Switch in reactive forms" formControlName="switch"></jnt-switch>
+    <span>switchForm.get('switch').value: {{switchForm.get('switch').value}}</span>
+  </form>
+
+  <ngx-prism language="html">
+<pre><![CDATA[
+<jnt-switch [(ngModel)]="checked" [disabled]="false" label="Switch" [size]="ui.sizes.large" name="switch"></jnt-switch>
+]]></pre>
+  </ngx-prism>
+
+  <h2>Switch with icon (on,off) & label (on, off)</h2>
+
+  <jnt-stack [type]="ui.stack.type.vertical">
+    <ng-container *ngFor="let size of [ui.sizes.tiny, ui.sizes.small, ui.sizes.normal, ui.sizes.large]">
+      <jnt-switch label="Switch" [iconOn]="ui.icons.check" [iconOff]="ui.icons.close" labelOn="On" labelOff="Off" [size]="size"></jnt-switch>
+      <jnt-switch labelOn="On" labelOff="Off" [iconOn]="ui.icons.check" [iconOff]="ui.icons.close" [(ngModel)]="checked" label="Switch checked" [size]="size" name="checked"></jnt-switch>
+      <jnt-switch labelOn="On" labelOff="Off" [iconOn]="ui.icons.check" [iconOff]="ui.icons.close" [disabled]="true" label="Switch disabled" [size]="size" name="disabled"></jnt-switch>
+      <jnt-switch labelOn="On" labelOff="Off" [iconOn]="ui.icons.check" [iconOff]="ui.icons.close" [(ngModel)]="checked" [disabled]="true" name="checked_disabled"
+                  label="Switch disabled & checked" [size]="size">
+      </jnt-switch>
+      <br>
+    </ng-container>
+  </jnt-stack>
+
+  <h1>Theme switcher</h1>
+
+  <form [formGroup]="themeForm">
+    <jnt-theme-switcher formControlName="theme"></jnt-theme-switcher>
+  </form>
+
+  <h3>API</h3>
+  <h4>jnt-switch</h4>
+  <table api>
+    <thead>
+    <tr>
+      <th>Property</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Default</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>[(ngModel)]</td>
+      <td>-</td>
+      <td>true | false</td>
+      <td>false</td>
+    </tr>
+    <tr>
+      <td>[disabled]</td>
+      <td>-</td>
+      <td>true | false</td>
+      <td>false</td>
+    </tr>
+    <tr>
+      <td>[label]</td>
+      <td>-</td>
+      <td>string</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>[size]</td>
+      <td>-</td>
+      <td>tiny | small | normal | large</td>
+      <td>normal</td>
+    </tr>
+    </tbody>
+  </table>
+
+</jnt-container>

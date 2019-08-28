@@ -1,0 +1,191 @@
+<jnt-container>
+  <h1>Chart</h1>
+  <jnt-stack resources [type]="ui.stack.type.horizontal">
+    <jnt-link [icon]="ui.icons.externalLink"
+              source="https://gitlab.com/junte/junte-ui/tree/master/projects/junte-ui/src/lib/components/chart"
+              target="_blank" title="GitLab">
+    </jnt-link>
+    <jnt-link [icon]="ui.icons.externalLink"
+              source="https://www.figma.com/file/EIUNwZCXL9Nm5BKQKl43mfDr/Junte-UI-v1?node-id=2616%3A70"
+              target="_blank" title="Figma">
+    </jnt-link>
+  </jnt-stack>
+  <jnt-stack>
+    <jnt-stack [type]="ui.stack.type.horizontal">
+      <jnt-label label="Selected chart" [color]="ui.colors.red"></jnt-label>
+       {{selected | json}}
+    </jnt-stack>
+    <jnt-chart [(ngModel)]="selected" title="Project" metric="Loading">
+      <jnt-chart-indicator title="Esanum" [data]="{project: 1}" [value]="32" label="129h" [color]="ui.colors.purple"></jnt-chart-indicator>
+      <jnt-chart-indicator title="Junte UI" [data]="{project: 2}" [value]="28" label="95h" [color]="ui.colors.red"></jnt-chart-indicator>
+      <jnt-chart-indicator title="Team Projector" [data]="{project: 3}" [value]="22" label="57h"
+                           [color]="ui.colors.green"></jnt-chart-indicator>
+      <jnt-chart-indicator title="Junte site" [data]="{project: 4}" [value]="18" label="50h" [color]="ui.colors.yellow"></jnt-chart-indicator>
+    </jnt-chart>
+
+    <jnt-chart [heightIndicator]="100" [widthMark]="40" [widthPoligon]="70" title="Project" metric="Loading">
+      <jnt-chart-indicator title="Esanum" [data]="{project: 5}" [value]="32" label="129h" [color]="ui.colors.purple"></jnt-chart-indicator>
+      <jnt-chart-indicator title="Junte UI" [data]="{project: 6}" [value]="28" label="95h" [color]="ui.colors.red"></jnt-chart-indicator>
+      <jnt-chart-indicator title="Team Projector" [data]="{project: 7}" [value]="22" label="57h"
+                           [color]="ui.colors.green"></jnt-chart-indicator>
+      <jnt-chart-indicator title="Junte site" [data]="{project: 8}" [value]="18" label="50h" [color]="ui.colors.yellow"></jnt-chart-indicator>
+    </jnt-chart>
+
+    <jnt-stack [align]="ui.flex.align.stretch">
+      <jnt-stack [type]="ui.stack.type.vertical">
+        <jnt-stack [type]="ui.stack.type.horizontal">
+          <jnt-label label="Selected chart" [color]="ui.colors.red"></jnt-label>
+          {{form.value | json}}
+        </jnt-stack>
+        <jnt-stack [type]="ui.stack.type.horizontal">
+          <jnt-button text="Add Chart" (click)="addChart()"></jnt-button>
+          <jnt-button text="Remove Chart" [scheme]="ui.schemes.fail" (click)="removeChart()"></jnt-button>
+        </jnt-stack>
+        <jnt-form [formGroup]="form">
+          <jnt-chart formControlName="selected" title="Project" metric="Loading">
+            <jnt-chart-indicator [data]="{project: 9}"
+                                 [value]="2" label="Lorem ipsum dolor sit amet."
+                                 [color]="ui.colors.purple">
+              <ng-template #titleTemplate>
+                <h3>Title</h3>
+                <h4>Title</h4>
+                <h4>Title</h4>
+                <h4>Title</h4>
+              </ng-template>
+            </jnt-chart-indicator>
+
+            <jnt-chart-indicator [data]="{project: 10}" title="Esanum" [value]="0" label="129h" [color]="ui.colors.yellow"></jnt-chart-indicator>
+            <ng-container *ngFor="let chart of charts; let i = index">
+              <jnt-chart-indicator
+                [data]="{id: i + 10}"
+                [title]="chart.title"
+                [value]="chart.value"
+                [label]="chart.label"
+                [color]="chart.color">
+              </jnt-chart-indicator>
+            </ng-container>
+          </jnt-chart>
+        </jnt-form>
+      </jnt-stack>
+    </jnt-stack>
+
+    <jnt-chart title="Project" metric="Loading"></jnt-chart>
+
+    <ngx-prism language="html">
+<pre><![CDATA[
+<jnt-chart title="Project" metric="Loading">
+  <jnt-chart-indicator title="Esanum"
+                       [data]="{project: 1}"
+                       [value]="32"
+                       label="129h"
+                       [color]="ui.colors.purple">
+  </jnt-chart-indicator>
+  <jnt-chart-indicator title="Junte UI"
+                       [data]="{project: 2}"
+                       [value]="28"
+                       label="95h"
+                       [color]="ui.colors.red">
+  </jnt-chart-indicator>
+  <jnt-chart-indicator title="Team Projector"
+                       [data]="{project: 3}"
+                       [value]="22"
+                       label="57h"
+                       [color]="ui.colors.green">
+  </jnt-chart-indicator>
+  <jnt-chart-indicator title="Junte site"
+                       [data]="{project: 4}"
+                       [value]="18"
+                       label="50h"
+                       [color]="ui.colors.yellow">
+  </jnt-chart-indicator>
+</jnt-chart>]]></pre>
+    </ngx-prism>
+
+    <h3>API</h3>
+    <h4>jnt-chart</h4>
+    <table api>
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Default</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>[title]</td>
+        <td>-</td>
+        <td>string</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>[metric]</td>
+        <td>-</td>
+        <td>string</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>[heightIndicator]</td>
+        <td>-</td>
+        <td>number</td>
+        <td>55</td>
+      </tr>
+      <tr>
+        <td>[widthPoligon]</td>
+        <td>-</td>
+        <td>number</td>
+        <td>50</td>
+      </tr>
+      <tr>
+        <td>[widthMark]</td>
+        <td>-</td>
+        <td>number</td>
+        <td>100</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h4>jnt-chart-indicator</h4>
+    <table api>
+      <thead>
+      <tr>
+        <th>Property</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Default</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>[label]</td>
+        <td>-</td>
+        <td>string</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>[value]</td>
+        <td>-</td>
+        <td>number</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>[title]</td>
+        <td>-</td>
+        <td>string</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>[color]</td>
+        <td>-</td>
+        <td>string | Colors</td>
+        <td>-</td>
+      </tr>
+      </tbody>
+    </table>
+
+  </jnt-stack>
+
+
+</jnt-container>
+
