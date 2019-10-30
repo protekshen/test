@@ -51,7 +51,7 @@
     "fs-extra": "7.0.1",
     "gulp-sass": "^4.0.2",
     "junte-encapsuler": "0.0.31",
-    "lodash-es": "4.17.11",
+    "lodash-es": "4.17.14",
     "map-stream": "0.0.7",
     "minimist": "1.2.0",
     "node-html-parser": "1.1.13",
